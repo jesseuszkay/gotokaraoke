@@ -1,0 +1,40 @@
+@import "animate.css";
+
+.finder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(1, 1, 1, 0.7);
+  margin: 1rem 2rem;
+  padding: 2rem 2rem;
+  height: 552px;
+
+  &__loading {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &-icon {
+      height: 6rem;
+      animation: wobble; /* referring directly to the animation's @keyframe declaration */
+      animation-duration: 2s; /* don't forget to set a duration! */
+      animation-iteration-count: infinite;
+    }
+  }
+
+  &__tool {
+    height: 350px;
+  }
+
+  &__button {
+    color: black;
+    font-size: 20px;
+    margin-right: 10px;
+
+    &--hide {
+      visibility: hidden;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+.profile {
+  flex: 1;
+  color: #fee;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  &__log-out {
+    color: black;
+  }
+
+  &__list {
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    height: 322px;
+
+    &-track {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      &-title {
+        width: 10rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      &-artists {
+        width: 7rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      &-year {
+        width: 2rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      &-time {
+        width: 2rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      &-button {
+        color: black;
+      }
+    }
+  }
+}

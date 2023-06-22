@@ -1,0 +1,68 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@import url(//fonts.googleapis.com/css?family=Bebas+Neue);
+
+.header {
+  padding: 1rem 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__user {
+    width: 160px;
+  }
+
+  &__title {
+    display: inline;
+    font: 400 5vh "Vibur";
+    color: #fee;
+    text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #dd44ff, 0 0 0.25em #dd44ff,
+      0 0 0.1em #dd44ff, 0 3px 1.5px #000;
+    justify-self: center;
+    padding-bottom: 1rem;
+    @include tablet {
+      padding-bottom: none;
+    }
+
+    &--1 {
+      font: 400 5vh "Vibur";
+      animation: blink linear infinite 7s;
+    }
+    &--2 {
+      font: 400 5vh "Vibur";
+      animation: blink linear infinite 6s;
+    }
+    &--3 {
+      font: 400 5vh "Vibur";
+      animation: blink linear infinite 5s;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    width: 9rem;
+  }
+  &__link {
+    color: #fee;
+    font: 400 20px "Bebas Neue";
+    &--active {
+      text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #8244ff, 0 0 0.25em #8244ff,
+        0 0 0.1em #8244ff, 0 3px 1.5px #000;
+    }
+
+    &:hover {
+      text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #8244ff, 0 0 0.25em #8244ff,
+        0 0 0.1em #8244ff, 0 3px 1.5px #000;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+.signup {
+  flex: 1;
+  color: #fee;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+
+  &__form {
+    margin-top: 10rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__form-title {
+    margin-bottom: 2rem;
+    font-size: 40px;
+  }
+
+  &__label {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__input {
+    font-size: 18px;
+    margin-left: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    color: black;
+    border: none;
+    flex: 1;
+  }
+
+  &__button {
+    width: 150px;
+    padding: 0.25rem 0.5rem;
+    color: #fee;
+    background-color: transparent;
+    align-self: center;
+    border: none;
+  }
+}

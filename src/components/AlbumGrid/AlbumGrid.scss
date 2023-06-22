@@ -1,0 +1,10 @@
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__album {
+    margin: 2rem;
+    height: 12rem;
+    width: 12rem;
+  }
+}

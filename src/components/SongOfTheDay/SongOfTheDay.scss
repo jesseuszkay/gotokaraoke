@@ -1,0 +1,68 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.daily {
+  display: flex;
+  background-color: rgb(1, 1, 1, 0.7);
+  margin: 1rem 2rem;
+  padding: 2rem 2rem;
+
+  &__details {
+    margin-left: 2rem;
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+  }
+  &__song {
+    margin-bottom: 1rem;
+  }
+  &__artist {
+    margin-bottom: 1rem;
+  }
+  &__reacts {
+    display: flex;
+    width: 20rem;
+    justify-content: space-between;
+  }
+
+  &__react-container {
+    display: flex;
+    align-items: center;
+    background-color: #dd44ffa2;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    margin-right: 1rem;
+    margin-top: 1rem;
+  }
+
+  &__or {
+    margin: 0 1rem;
+    font-size: 14px;
+  }
+
+  &__react {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: #e883ffb0;
+    border-radius: 10px;
+    padding: 0.5rem;
+    border: none;
+
+    &--voted {
+      background: #ff83e0b0;
+    }
+  }
+
+  &__emoji {
+    font-size: 28px;
+    margin-right: 0.5rem;
+  }
+  &__score {
+    font-size: 20px;
+  }
+}
