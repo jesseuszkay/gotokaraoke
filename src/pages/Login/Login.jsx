@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
-
   const handleOnSubmit = async (event) => {
     event.preventDefault();
 
@@ -16,6 +15,7 @@ function Login() {
       username,
       password,
     });
+    console.log("this is for login error: ", response.data.token);
     sessionStorage.authToken = response.data.token;
     navigate("/home");
   };

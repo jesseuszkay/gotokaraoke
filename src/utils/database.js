@@ -2,6 +2,7 @@ import axios from "axios";
 
 function obtainUserDetails(userDetailsFunction) {
   const isLoggedIn = !!sessionStorage.authToken;
+  console.log("this is for login error: ", isLoggedIn);
   if (isLoggedIn) {
     axios
       .get("http://localhost:8080/user/profile", {
@@ -10,6 +11,7 @@ function obtainUserDetails(userDetailsFunction) {
         },
       })
       .then((response) => {
+        console.log("this is for login error: ", response);
         userDetailsFunction(response.data);
       })
       .catch((error) => {
@@ -36,12 +38,12 @@ function obtainSongList(
         songCountFunction(0);
       }
       songListFunction(
-        response.data.slice(pageNumberArg * 20 - 20, pageNumberArg * 20)
+        response.data.slice(pageNumberArg * 15 - 15, pageNumberArg * 15)
       );
       if (
         response.data.slice(
-          (pageNumberArg + 1) * 20 - 20,
-          (pageNumberArg + 1) * 20
+          (pageNumberArg + 1) * 15 - 15,
+          (pageNumberArg + 1) * 15
         ).length === 0
       ) {
         showNextFunction(false);
@@ -50,8 +52,8 @@ function obtainSongList(
       }
       if (
         response.data.slice(
-          (pageNumberArg - 1) * 20 - 20,
-          (pageNumberArg - 1) * 20
+          (pageNumberArg - 1) * 15 - 15,
+          (pageNumberArg - 1) * 15
         ).length === 0
       ) {
         showBackFunction(false);

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 function getDailySong(dailySongFunction) {
-  const YoutubeAPI = "AIzaSyB52p07gtoAxA_C5Fft-7DbaBi4aFesFU0";
+  const YoutubeAPI = "AIzaSyC9CoQeqW4XIdevA1XQTdZR8w8u7iL8fJA";
   const secondaryYoutubeAPI = "AIzaSyBPtmKRYr1l9ZLuj4b3Lm8zIUHRKtwELts";
   const YoutubeAPIURL =
     "https://www.googleapis.com/youtube/v3/search?key=" +

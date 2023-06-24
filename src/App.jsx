@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     obtainUserDetails(setUserDetails);
-  }, [userDetails]);
+  }, []);
 
   if (!userDetails && isLoggedIn) {
     return <div className="">loading</div>;
