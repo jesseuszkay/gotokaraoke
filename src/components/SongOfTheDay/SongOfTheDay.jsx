@@ -2,38 +2,43 @@ import "./SongOfTheDay.scss";
 import { useEffect, useState } from "react";
 import {
   getDailySong,
+  getDailySongStats,
   addDailySong,
+  addDailyVote,
   updateDailySongStats,
 } from "../../utils/daily_song_updates";
+import { Link } from "react-router-dom";
 
-function SongOfTheDay() {
-  const [songOfDay, setSongOfDay] = useState(null);
-  const [ratings, getRatings] = useState(null);
-  const [votes, setVotes] = useState({
-    fun: 0,
-    boring: 0,
-    easy: 0,
-    hard: 0,
-  });
+function SongOfTheDay({ isLoggedIn, userDetails }) {
+  const [songOfDay, setSongOfDay] = useState(undefined);
+  const [ratings, setRatings] = useState(null);
+  const [voted, setVoted] = useState({ fun: false, easy: false });
 
   useEffect(() => {
     getDailySong(setSongOfDay);
   }, []);
 
   useEffect(() => {
-    if (songOfDay) {
-      const videoID = songOfDay.snippet.resourceId.videoId;
-      addDailySong(videoID);
-      getDailySongStats(videoID, getRatings);
-    }
-  }, [songOfDay]);
+    const fetchData = async () => {
+      if (songOfDay) {
+        const videoID = songOfDay.id.videoId;
+        await addDailySong(videoID);
+        if (isLoggedIn && userDetails) {
+          await addDailyVote(videoID, userDetails.userId);
+          getDailySongStats(videoID, setRatings);
+        }
+      }
+    };
 
-  if (!songOfDay) {
-    return <div className="App">Loading...</div>;
+    fetchData();
+  }, [songOfDay, ratings]);
+
+  if (!songOfDay || (isLoggedIn && !ratings)) {
+    return <div className="">Loading...</div>;
   }
 
   const videoThumbnailURL = songOfDay.snippet.thumbnails.medium.url;
-  const videoID = songOfDay.snippet.resourceId.videoId;
+  const videoID = songOfDay.id.videoId;
   const videoURL = "https://www.youtube.com/watch?v=" + videoID;
   const songInfo = songOfDay.snippet.title;
   const songArtist = songInfo.split(" - ")[0];
@@ -41,98 +46,61 @@ function SongOfTheDay() {
 
   function handleOnClick(event) {
     const type = event.target.closest("button").value;
-    const oppositeType =
-      type === "fun"
-        ? "boring"
-        : type === "boring"
-        ? "fun"
-        : type === "easy"
-        ? "hard"
-        : type === "hard"
-        ? "easy"
-        : "";
-    let direction = "";
-    if (votes[type] === 0) {
-      direction = "increase";
-    } else {
-      direction = "decrease";
-    }
-    setVotes((prev) => ({
+    updateDailySongStats(videoID, userDetails.userId, type);
+    setVoted((prev) => ({
       ...prev,
-      [type]: prev[type] === 0 ? 1 : 0,
-      [oppositeType]: prev[type] === 0 ? 0 : 1,
+      [type]: !prev[type],
     }));
-    updateDailySongStats(videoID, type, direction);
+    getDailySongStats(videoID, setRatings);
   }
 
   return (
     <div className="daily">
-      <a target="_blank" href={videoURL}>
+      <Link target="_blank" to={videoURL} className="daily__link">
         <img
-          className="daily__video"
+          className="daily__thumbnail"
           src={videoThumbnailURL}
           alt="Video Thumbnail"
         />
-      </a>
+      </Link>
       <div className="daily__details">
-        <h1 className="daily__title">Song of the day</h1>
-        <p className="daily__song">{songTitle}</p>
-        <p className="daily__artist">{songArtist}</p>
-        <div className="daily__vote-message">
-          Cast your vote! Is this song fun, boring, easy to sing, or difficult!
+        <div className="daily__info">
+          <h1 className="daily__title">Song of the day</h1>
+          <p className="daily__song">{songTitle}</p>
+          <p className="daily__artist">{songArtist}</p>
         </div>
-        <div className="daily__reacts" onClick={handleOnClick}>
-          <div className="daily__react-container">
-            <button
-              className={`${
-                votes.fun === 1
-                  ? "daily__react daily__react--voted"
-                  : "daily__react"
-              }`}
-              value="fun"
-            >
-              <div className="daily__emoji">🥳</div>
-              <div className="daily__score">{ratings.fun}</div>
-            </button>
-            <div className="daily__or">or</div>
-            <button
-              className={`${
-                votes.boring === 1
-                  ? "daily__react daily__react--voted"
-                  : "daily__react"
-              }`}
-              value="boring"
-            >
-              <div className="daily__emoji">😴</div>
-              <div className="daily__score">{ratings.boring}</div>
-            </button>
+        {isLoggedIn && (
+          <div className="daily__voting">
+            <div className="daily__vote-message">
+              We would love to know if you think this song is fun and/or easy to
+              sing!
+            </div>
+            <div className="daily__reacts" onClick={handleOnClick}>
+              <button
+                className={`${
+                  voted.fun
+                    ? "daily__react daily__react--voted"
+                    : "daily__react"
+                }`}
+                value="fun"
+              >
+                <div className="daily__emoji">🥳</div>
+                <div className="daily__score">{ratings.fun}</div>
+              </button>
+              <button
+                className={`${
+                  voted.easy
+                    ? "daily__react daily__react--voted"
+                    : "daily__react"
+                }`}
+                value="easy"
+              >
+                <div className="daily__emoji">😋</div>
+                <div className="daily__score">{ratings.easy}</div>
+              </button>
+            </div>
           </div>
-          <div className="daily__react-container">
-            <button
-              className={`${
-                votes.easy === 1
-                  ? "daily__react daily__react--voted"
-                  : "daily__react"
-              }`}
-              value="easy"
-            >
-              <div className="daily__emoji">😋</div>
-              <div className="daily__score">{ratings.easy}</div>
-            </button>
-            <div className="daily__or">or</div>
-            <button
-              className={`${
-                votes.hard === 1
-                  ? "daily__react daily__react--voted"
-                  : "daily__react"
-              }`}
-              value="hard"
-            >
-              <div className="daily__emoji">😣</div>
-              <div className="daily__score">{ratings.hard}</div>
-            </button>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

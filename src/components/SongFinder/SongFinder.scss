@@ -2,13 +2,10 @@
 
 .finder {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(1, 1, 1, 0.7);
-  margin: 1rem 2rem;
-  padding: 2rem 2rem;
-  height: 552px;
+
+  margin: 2% 5%;
+
+  flex-grow: 1;
 
   &__loading {
     height: 100%;
@@ -25,7 +22,7 @@
   }
 
   &__tool {
-    height: 350px;
+    flex-grow: 1;
   }
 
   &__button {

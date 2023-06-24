@@ -28,6 +28,10 @@ function App() {
     obtainUserDetails(setUserDetails);
   }, [userDetails]);
 
+  if (!userDetails && isLoggedIn) {
+    return <div className="">loading</div>;
+  }
+
   return (
     <div className={`${isLandingPage ? "app app--landing" : "app"}`}>
       <div className="app__page">

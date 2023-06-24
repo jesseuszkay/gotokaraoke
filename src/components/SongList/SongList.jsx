@@ -23,6 +23,16 @@ export default function SongList({
     obtainUserDetails(setUserDetails);
   }
 
+  if (!songList.length) {
+    return <div className="">Loading...</div>;
+  }
+
+  if (isLoggedIn) {
+    if (!userDetails || !userDetails.songs) {
+      return <div className="">Loading...</div>;
+    }
+  }
+
   return (
     <div className="list">
       {songList.map((song) => {

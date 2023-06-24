@@ -1,8 +1,7 @@
 import { NavLink, Link } from "react-router-dom";
 import "./Header.scss";
 
-function Header({ isLoggedIn, username }) {
-  // Adds class to active page's link
+function Header({ isLoggedIn }) {
   const navLinkActive = ({ isActive }) => {
     if (isActive) {
       return "header__link header__link--active";

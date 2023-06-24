@@ -37,7 +37,7 @@ export default function SongFinder({
     );
   }, [pageNumber]);
 
-  if (!songList) {
+  if (!songList || (isLoggedIn && !userDetails)) {
     return (
       <div className="finder__loading">
         <img

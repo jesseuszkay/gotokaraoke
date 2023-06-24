@@ -15,9 +15,14 @@ function Home({ isLoggedIn, userDetails, setUserDetails }) {
       setGridMode(true);
     }
   }
+
+  if (isLoggedIn && !userDetails) {
+    return <div className="App">Loading...</div>;
+  }
+
   return (
     <div className="home">
-      <SongOfTheDay />
+      {/* <SongOfTheDay isLoggedIn={isLoggedIn} userDetails={userDetails} /> */}
       <div className="home__selects">
         <button
           className="home__select home__select-list"

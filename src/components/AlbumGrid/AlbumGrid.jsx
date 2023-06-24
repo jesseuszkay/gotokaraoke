@@ -9,12 +9,14 @@ import "./AlbumGrid.scss";
 export default function AlbumGrid({}) {
   return (
     <div className="grid">
-      <img src={album1} alt="Marvin Gaye Album" className="grid__album" />
-      <img src={album2} alt="Marvin Gaye Album" className="grid__album" />
-      <img src={album3} alt="Marvin Gaye Album" className="grid__album" />
-      <img src={album4} alt="Marvin Gaye Album" className="grid__album" />
-      <img src={album7} alt="Marvin Gaye Album" className="grid__album" />
-      <img src={album6} alt="Marvin Gaye Album" className="grid__album" />
+      <img src={album1} alt="Album Art" className="grid__album" />
+      <img src={album2} alt="Album Art" className="grid__album" />
+      <img src={album3} alt="Album Art" className="grid__album" />
+      <img src={album4} alt="Album Art" className="grid__album" />
+      <img src={album7} alt="Album Art" className="grid__album" />
+      <img src={album6} alt="Album Art" className="grid__album" />
+      <img src={album1} alt="Album Art" className="grid__album" />
+      <img src={album2} alt="Album Art" className="grid__album" />
     </div>
   );
 }

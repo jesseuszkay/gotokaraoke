@@ -1,9 +1,8 @@
 .list {
-  font-size: 12px;
+  font-size: 20px;
   display: flex;
   flex-direction: column;
-  height: 322px;
-
+  flex: 1;
   &__track {
     display: flex;
     justify-content: space-between;

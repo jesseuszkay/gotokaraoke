@@ -5,16 +5,12 @@ import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const navigate = useNavigate();
-  const [error, setError] = useState();
-  // POST the credentials to /signup
   const handleOnSubmit = async (event) => {
     event.preventDefault();
 
-    // grab the values from the form
     const username = event.target.username.value;
     const password = event.target.password.value;
 
-    // send an axios POST request
     const response = await axios.post("http://localhost:8080/user/signup", {
       username,
       password,
@@ -44,8 +40,6 @@ function SignUp() {
             autoComplete="off"
           />
         </label>
-
-        {error && <div className="signup__message">{error}</div>}
 
         <button type="submit" className="signup__button">
           Create Account

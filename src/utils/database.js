@@ -60,7 +60,6 @@ function obtainSongList(
       }
     })
     .catch((error) => {
-      // Handle the error
       if (error.response && error.response.status === 404) {
       }
     });

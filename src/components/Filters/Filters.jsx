@@ -47,7 +47,7 @@ export default function Filters({
         <div className="filters__dropdowns">
           <label className="filters__label">
             Decade:
-            <select name="decades" className="filters__decades">
+            <select name="decades" className="filters__selects">
               <option value="">All</option>
               <option value="1950s">1950s</option>
               <option value="1960s">1960s</option>
@@ -61,7 +61,7 @@ export default function Filters({
           </label>
           <label className="filters__label">
             Length:
-            <select name="length" className="filters__length">
+            <select name="length" className="filters__selects">
               <option value="">All</option>
               <option value="<2min">Under 2 minutes</option>
               <option value="2-3min">2:00-3:00</option>
@@ -72,7 +72,7 @@ export default function Filters({
           </label>
           <label className="filters__label">
             Genre:
-            <select name="genre" className="filters__genre">
+            <select name="genre" className="filters__selects">
               <option value="">All</option>
               <option value="1">Pop</option>
               <option value="2">Dance</option>

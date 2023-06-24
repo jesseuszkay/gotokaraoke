@@ -5,16 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
-  const [error, setError] = useState();
-  // POST the credentials to /login
+
   const handleOnSubmit = async (event) => {
     event.preventDefault();
 
-    // grab the values from the form
     const username = event.target.username.value;
     const password = event.target.password.value;
 
-    // send an axios POST request
     const response = await axios.post("http://localhost:8080/user/login", {
       username,
       password,
@@ -45,8 +42,6 @@ function Login() {
             autoComplete="off"
           />
         </label>
-
-        {error && <div className="login__message">{error}</div>}
 
         <button type="submit" className="login__button">
           Enter

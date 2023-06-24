@@ -4,25 +4,13 @@ function getDailySong(dailySongFunction) {
   const YoutubeAPI = "AIzaSyB52p07gtoAxA_C5Fft-7DbaBi4aFesFU0";
   const secondaryYoutubeAPI = "AIzaSyBPtmKRYr1l9ZLuj4b3Lm8zIUHRKtwELts";
   const YoutubeAPIURL =
-    "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=PL8D4Iby0Bmm9y57_K3vBvkZiaGjIXD_x5&maxResults=1&key=" +
-    secondaryYoutubeAPI +
-    "&part=snippet&fields=items(snippet(title,thumbnails(medium(url)),resourceId(videoId)))";
-
+    "https://www.googleapis.com/youtube/v3/search?key=" +
+    YoutubeAPI +
+    "&channelId=UCwTRjvjVge51X-ILJ4i22ew&part=snippet&fields=items(id(videoId),snippet(title,thumbnails(medium(url))))&order=date&maxResults=1";
   axios
     .get(YoutubeAPIURL)
     .then((response) => {
       dailySongFunction(response.data.items[0]);
-    })
-    .catch((error) => {
-      alert(error);
-    });
-}
-
-function getDailySongStats(videoId, dailySongStatsFunction) {
-  axios
-    .get(`http://localhost:8080/dailysongs/get/${videoId}`)
-    .then((response) => {
-      dailySongStatsFunction(response.data);
     })
     .catch((error) => {
       console.log(error);
@@ -31,19 +19,41 @@ function getDailySongStats(videoId, dailySongStatsFunction) {
 
 function addDailySong(videoId) {
   axios
-    .post(`http://localhost:8080/dailysongs/add`, {
+    .post(`http://localhost:8080/dailysongs/addSong`, {
       videoId,
     })
+    .catch();
+}
+
+function addDailyVote(videoId, userId) {
+  axios
+    .post(`http://localhost:8080/dailysongs/addVote`, {
+      videoId,
+      userId,
+    })
+    .catch();
+}
+
+function getDailySongStats(videoId, dailySongStatsFunction) {
+  axios
+    .get(`http://localhost:8080/dailysongs/get/${videoId}`, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.authToken}`,
+      },
+    })
+    .then((response) => {
+      dailySongStatsFunction(response.data);
+    })
     .catch((error) => {
-      console.log(error);
+      console.log(error.message);
     });
 }
 
-function updateDailySongStats(videoId, type, direction) {
+function updateDailySongStats(videoId, userId, type) {
   axios
     .patch(`http://localhost:8080/dailysongs/rate/${videoId}`, {
       type,
-      direction,
+      userId,
     })
     .then((response) => {
       console.log(response);
@@ -53,4 +63,10 @@ function updateDailySongStats(videoId, type, direction) {
     });
 }
 
-export { getDailySong, addDailySong, updateDailySongStats, getDailySongStats };
+export {
+  getDailySong,
+  addDailySong,
+  addDailyVote,
+  updateDailySongStats,
+  getDailySongStats,
+};
