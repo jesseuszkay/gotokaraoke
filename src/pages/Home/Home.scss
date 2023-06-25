@@ -6,11 +6,11 @@
 
 .home {
   margin: 6% 10% 3% 10%;
+  padding: 3% 10% 3% 10%;
   display: flex;
   flex-grow: 1;
   background-color: rgb(1, 1, 1, 0.7);
   flex-direction: column;
-  justify-content: center;
   align-content: center;
 
   @include desktop {
@@ -24,6 +24,11 @@
   &__select {
     background: none;
     border: none;
+    font-size: 24px;
+    &--selected {
+      text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #5744ff, 0 0 0.25em #5744ff,
+        0 0 0.1em #5744ff, 0 3px 1.5px #000;
+    }
     &-list {
       padding-right: 1rem;
       border-right: 2px solid #fee;

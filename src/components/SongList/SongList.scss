@@ -2,42 +2,49 @@
   font-size: 20px;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  margin: 0 2rem;
   &__track {
     display: flex;
-    justify-content: space-between;
     width: 100%;
 
     &-title {
-      width: 10rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      width: 16rem;
+      text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #dd44ff, 0 0 0.25em #dd44ff,
+        0 0 0.1em #dd44ff, 0 3px 1.5px #000;
     }
 
     &-artists {
-      width: 7rem;
+      width: 12rem;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
     &-year {
-      width: 2rem;
+      width: 4rem;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
     &-time {
-      width: 2rem;
+      width: 4rem;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
     &-button {
-      margin-left: 1rem;
-      color: black;
-      font-size: 6px;
-      width: 3rem;
+      border: none;
+      background: none;
+      cursor: pointer;
+      width: 24px;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      &--add {
+        background-image: url("../../assets/add.png");
+      }
+      &--remove {
+        background-image: url("../../assets/remove.png");
+      }
     }
   }
 }

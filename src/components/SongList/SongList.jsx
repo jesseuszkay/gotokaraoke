@@ -6,6 +6,7 @@ import {
 } from "../../utils/database";
 import convertMillisecondsToMMSS from "../../utils/ms_to_mins";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function SongList({
   songList,
@@ -13,68 +14,91 @@ export default function SongList({
   userDetails,
   setUserDetails,
 }) {
-  function handleOnClick(event) {
-    if (event.target.id === "add") {
-      addSongToList(event.target.value, userDetails.userId);
-    }
-    if (event.target.id === "remove") {
-      removeSongFromList(event.target.value, userDetails.userId);
-    }
-    obtainUserDetails(setUserDetails);
-  }
-
   if (!songList.length) {
     return <div className="">Loading...</div>;
   }
 
+  function handleOnClick(event) {
+    const addPromise =
+      event.target.id === "add"
+        ? axios.post(`http://localhost:8080/user/profile/add`, {
+            song_id: event.target.value,
+            user_id: userDetails.userId,
+          })
+        : Promise.resolve(); // No operation if event.target.id is not "add"
+
+    const removePromise =
+      event.target.id === "remove"
+        ? axios.delete(
+            `http://localhost:8080/user/profile/${userDetails.userId}/${event.target.value}`
+          )
+        : Promise.resolve(); // No operation if event.target.id is not "remove"
+
+    Promise.all([addPromise, removePromise])
+      .then(() => {
+        axios
+          .get("http://localhost:8080/user/profile", {
+            headers: {
+              Authorization: `Bearer ${sessionStorage.authToken}`,
+            },
+          })
+          .then((response) => {
+            setUserDetails(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   if (isLoggedIn) {
-    if (!userDetails || !userDetails.songs) {
+    if (!userDetails) {
       return <div className="">Loading...</div>;
     }
   }
+
+  console.log(userDetails);
 
   return (
     <div className="list">
       {songList.map((song) => {
         return (
           <div className="list__track" key={song.id}>
-            <div className="list__track-title">{song.title}</div>
+            <Link
+              target="_blank"
+              to={`https://www.youtube.com/watch?v=${song.videoId}`}
+            >
+              <div className="list__track-title">{song.title}</div>
+            </Link>
             <div className="list__track-artists">{song.artists}</div>
             <div className="list__track-year">{song.year_released}</div>
             <div className="list__track-time">
               {convertMillisecondsToMMSS(song.duration_ms)}
             </div>
-            <Link
-              target="_blank"
-              to={`https://www.youtube.com/watch?v=${song.videoId}`}
-            >
-              <div className="list__track-link">Link to video</div>
-            </Link>
             {isLoggedIn &&
               !userDetails.songs.some((listSong) => {
                 return listSong.id === song.id;
               }) && (
                 <button
-                  className="list__track-button"
+                  className="list__track-button list__track-button--add"
                   value={song.id}
                   id="add"
                   onClick={handleOnClick}
-                >
-                  Add to list
-                </button>
+                ></button>
               )}
             {isLoggedIn &&
               userDetails.songs.some((listSong) => {
                 return listSong.id === song.id;
               }) && (
                 <button
-                  className="list__track-button"
+                  className="list__track-button list__track-button--remove"
                   value={song.id}
                   id="remove"
                   onClick={handleOnClick}
-                >
-                  Remove from list
-                </button>
+                ></button>
               )}
           </div>
         );

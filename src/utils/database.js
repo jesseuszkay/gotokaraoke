@@ -2,7 +2,6 @@ import axios from "axios";
 
 function obtainUserDetails(userDetailsFunction) {
   const isLoggedIn = !!sessionStorage.authToken;
-  console.log("this is for login error: ", isLoggedIn);
   if (isLoggedIn) {
     axios
       .get("http://localhost:8080/user/profile", {
@@ -11,7 +10,6 @@ function obtainUserDetails(userDetailsFunction) {
         },
       })
       .then((response) => {
-        console.log("this is for login error: ", response);
         userDetailsFunction(response.data);
       })
       .catch((error) => {

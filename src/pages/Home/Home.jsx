@@ -1,4 +1,3 @@
-import SongOfTheDay from "../../components/SongOfTheDay/SongOfTheDay";
 import SongFinder from "../../components/SongFinder/SongFinder";
 import AlbumGrid from "../../components/AlbumGrid/AlbumGrid";
 import { useState } from "react";
@@ -22,17 +21,24 @@ function Home({ isLoggedIn, userDetails, setUserDetails }) {
 
   return (
     <div className="home">
-      {/* <SongOfTheDay isLoggedIn={isLoggedIn} userDetails={userDetails} /> */}
       <div className="home__selects">
         <button
-          className="home__select home__select-list"
+          className={
+            !gridMode
+              ? "home__select home__select-list home__select--selected"
+              : "home__select home__select-list"
+          }
           value="list"
           onClick={handleOnClick}
         >
           Song List
         </button>
         <button
-          className="home__select home__select-grid"
+          className={
+            gridMode
+              ? "home__select home__select-grid home__select--selected"
+              : "home__select home__select-grid"
+          }
           value="grid"
           onClick={handleOnClick}
         >

@@ -1,49 +1,60 @@
 .filters {
   display: flex;
   flex-direction: column;
-  margin-right: 3rem;
+  align-items: center;
+  margin: 1rem 0;
 
   &__form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 7rem;
   }
 
   &__search {
-    width: 10rem;
+    width: 100%;
+    font-size: 24px;
+    padding: 2px 5px;
     color: black;
   }
 
   &__dropdowns {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    width: 30rem;
   }
 
   &__label {
     font-size: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-right: 1rem;
   }
 
   &__selects {
-    width: 100%;
+    margin-left: 0.5rem;
+    width: 6rem;
     color: black;
     padding: 2px 5px;
   }
 
   &__buttons {
     display: flex;
+    justify-content: space-between;
+    width: 11.5rem;
   }
 
   &__button {
-    margin-right: 1rem;
-    color: black;
-    padding: 1px 2px;
+    background: #5744ff;
+    box-shadow: 0 0 10px #5744ff;
+    border: none;
+    color: #fee;
+    font-size: 18px;
+    padding: 2px 5px;
+    border-radius: 4px;
   }
 
   &__song-count {
-    margin-bottom: 1rem;
-    font-size: 12px;
+    margin-top: 2rem;
+    font-size: 20px;
   }
 }

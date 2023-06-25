@@ -15,18 +15,30 @@ import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import { useEffect, useState } from "react";
 import { obtainUserDetails } from "../src/utils/database";
-
+import axios from "axios";
 function App() {
   const location = useLocation();
   const isLandingPage = location.pathname === "/";
-  // determine whether to show login or profile?
   const isLoggedIn = !!sessionStorage.authToken;
-  const [userSongList, setUserSongList] = useState(null);
   const [userDetails, setUserDetails] = useState(null);
+  const [gotDetails, setGotDetails] = useState(null);
 
   useEffect(() => {
-    obtainUserDetails(setUserDetails);
-  }, []);
+    if (isLoggedIn) {
+      axios
+        .get("http://localhost:8080/user/profile", {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.authToken}`,
+          },
+        })
+        .then((response) => {
+          setUserDetails(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [isLoggedIn]);
 
   if (!userDetails && isLoggedIn) {
     return <div className="">loading</div>;
@@ -63,6 +75,8 @@ function App() {
                   <Profile
                     setUserDetails={setUserDetails}
                     userDetails={userDetails}
+                    gotDetails={gotDetails}
+                    setGotDetails={setGotDetails}
                   />
                 ) : (
                   <Navigate replace to="/login" />
@@ -73,11 +87,7 @@ function App() {
             <Route
               path="/login"
               element={
-                isLoggedIn ? (
-                  <Navigate replace to="/profile" />
-                ) : (
-                  <Login isLoggedIn={isLoggedIn} />
-                )
+                isLoggedIn ? <Navigate replace to="/profile" /> : <Login />
               }
             />
 

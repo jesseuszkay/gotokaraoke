@@ -5,20 +5,30 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
-  const handleOnSubmit = async (event) => {
+
+  function handleOnSubmit(event) {
     event.preventDefault();
 
     const username = event.target.username.value;
     const password = event.target.password.value;
 
-    const response = await axios.post("http://localhost:8080/user/login", {
-      username,
-      password,
-    });
-    console.log("this is for login error: ", response.data.token);
-    sessionStorage.authToken = response.data.token;
+    axios
+      .post("http://localhost:8080/user/login", {
+        username,
+        password,
+      })
+      .then((response) => {
+        sessionStorage.authToken = response.data.token;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    if (!sessionStorage.getItem("authToken")) {
+      return <div className="">loading!</div>;
+    }
     navigate("/home");
-  };
+  }
 
   return (
     <div className="login">

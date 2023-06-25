@@ -62,12 +62,6 @@ export default function SongFinder({
         setShowBack={setShowBack}
       />
       <div className="finder__tool">
-        <SongList
-          songList={songList}
-          isLoggedIn={isLoggedIn}
-          userDetails={userDetails}
-          setUserDetails={setUserDetails}
-        />
         <button
           className={`${
             showBack ? "finder__button" : "finder__button finder__button--hide"
@@ -75,8 +69,15 @@ export default function SongFinder({
           value="back"
           onClick={handleOnClick}
         >
-          Back
+          {"< Back"}
         </button>
+        <SongList
+          songList={songList}
+          isLoggedIn={isLoggedIn}
+          userDetails={userDetails}
+          setUserDetails={setUserDetails}
+        />
+
         <button
           className={`${
             showNext ? "finder__button" : "finder__button finder__button--hide"
@@ -84,7 +85,7 @@ export default function SongFinder({
           value="next"
           onClick={handleOnClick}
         >
-          Next
+          {"Next >"}
         </button>
       </div>
     </div>

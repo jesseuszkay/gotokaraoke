@@ -85,11 +85,9 @@ export default function Filters({
           <button type="submit" className="filters__button">
             Filter Songs
           </button>
-          <input
-            type="reset"
-            value="Reset Filters"
-            className="filters__button"
-          ></input>
+          <button type="reset" className="filters__button">
+            Reset Filters
+          </button>
         </div>
       </form>
       {songCount === 0 && (

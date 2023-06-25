@@ -2,10 +2,8 @@
 
 .finder {
   display: flex;
-
-  margin: 2% 5%;
-
-  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
 
   &__loading {
     height: 100%;
@@ -22,12 +20,18 @@
   }
 
   &__tool {
-    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    height: 360px;
   }
 
   &__button {
-    color: black;
-    font-size: 20px;
+    background: none;
+    border: none;
+    color: #fee;
+    text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #5744ff, 0 0 0.25em #5744ff,
+      0 0 0.1em #5744ff, 0 3px 1.5px #000;
+    font-size: 24px;
     margin-right: 10px;
 
     &--hide {

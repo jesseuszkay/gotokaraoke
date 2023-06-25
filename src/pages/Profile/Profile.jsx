@@ -20,18 +20,20 @@ export default function Profile({ userDetails, setUserDetails }) {
     return <>Loading...</>;
   }
 
+  console.log(userDetails);
+
   return (
     <div className="profile">
       <div className="profile__welcome">Welcome, {userDetails.username}!</div>
       <div className="profile__list">
-        {!userDetails.songs[1] && (
+        {!userDetails.songs[0].id && (
           <div className="profile__new-account">
             {" "}
             Add some songs to your list by clicking "add to list" on songs in
             the song finder!
           </div>
         )}
-        {userDetails.songs[1] &&
+        {userDetails.songs[0].id &&
           userDetails.songs.map((song) => {
             return (
               <div className="profile__list-track" key={song.id}>
