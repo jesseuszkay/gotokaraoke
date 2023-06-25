@@ -8,9 +8,22 @@
 .grid {
   display: flex;
   flex-wrap: wrap;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  overflow-y: hidden;
+  height: 504px;
 
-  @include desktop {
-    justify-content: space-between;
+  &__coming-soon {
+    position: absolute;
+    text-align: center;
+    font-size: 60px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #dd44ff, 0 0 0.25em #dd44ff,
+      0 0 0.1em #dd44ff, 0 3px 1.5px #000;
   }
 
   &__album {
