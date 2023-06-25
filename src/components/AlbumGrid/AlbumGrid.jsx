@@ -22,6 +22,12 @@ export default function AlbumGrid({}) {
       <img src={album7} alt="Album Art" className="grid__album" />
       <img src={album8} alt="Album Art" className="grid__album" />
       <img src={album9} alt="Album Art" className="grid__album" />
+      <img src={album1} alt="Album Art" className="grid__album" />
+      <img src={album2} alt="Album Art" className="grid__album" />
+      <img src={album3} alt="Album Art" className="grid__album" />
+      <img src={album4} alt="Album Art" className="grid__album" />
+      <img src={album5} alt="Album Art" className="grid__album" />
+      <img src={album6} alt="Album Art" className="grid__album" />
     </div>
   );
 }

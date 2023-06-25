@@ -1,12 +1,20 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@import "animate.css";
+
 .grid {
-  padding: 0 10rem;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: space-between;
 
   &__album {
-    margin: 1rem 1rem;
+    margin: 1.25rem 1rem;
     height: 8rem;
     width: 8rem;
+    animation: flipInY; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
   }
 }

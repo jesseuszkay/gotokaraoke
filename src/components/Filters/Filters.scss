@@ -44,6 +44,7 @@
     @include desktop {
       flex-direction: row;
       width: 30rem;
+      height: auto;
     }
   }
 
@@ -64,6 +65,7 @@
     padding: 2px 5px;
     flex: 1;
     @include desktop {
+      flex: 0;
       width: 6rem;
     }
   }
