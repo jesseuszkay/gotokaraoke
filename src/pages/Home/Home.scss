@@ -5,34 +5,51 @@
 @use "../../styles/partials/variables" as *;
 
 .home {
-  margin: 6% 10% 3% 10%;
-  padding: 3% 10% 3% 10%;
+  margin-top: 9.5rem;
   display: flex;
   flex-grow: 1;
-  background-color: rgb(1, 1, 1, 0.7);
   flex-direction: column;
-  align-content: center;
 
   @include desktop {
     margin: 0;
+    padding: 3% 10% 3% 10%;
+    background-color: rgb(1, 1, 1, 0.7);
+    border-radius: 10px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
   }
 
   &__selects {
     display: flex;
     justify-content: center;
+
+    @include desktop {
+      margin-bottom: 0.5rem;
+    }
   }
+
   &__select {
     background: none;
     border: none;
-    font-size: 24px;
+    font-size: 18px;
+
+    @include desktop {
+      font-size: 24px;
+    }
+
     &--selected {
       text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #5744ff, 0 0 0.25em #5744ff,
         0 0 0.1em #5744ff, 0 3px 1.5px #000;
     }
+
     &-list {
       padding-right: 1rem;
       border-right: 2px solid #fee;
     }
+
     &-grid {
       padding-left: 1rem;
     }

@@ -1,26 +1,44 @@
 import "./Profile.scss";
 import { useNavigate, Link } from "react-router-dom";
 import convertMillisecondsToMMSS from "../../utils/ms_to_mins";
-import { obtainUserDetails, removeSongFromList } from "../../utils/database";
+import axios from "axios";
 
 export default function Profile({ userDetails, setUserDetails }) {
   const navigate = useNavigate();
 
   function handleOnClick() {
     sessionStorage.clear();
-    navigate("/");
+    navigate("/home");
   }
 
   function handleOnClick2(event) {
-    removeSongFromList(event.target.value, userDetails.userId);
-    obtainUserDetails(setUserDetails);
+    const removePromise = axios.delete(
+      `http://localhost:8080/user/profile/${userDetails.userId}/${event.target.value}`
+    );
+
+    Promise.all([removePromise])
+      .then(() => {
+        axios
+          .get("http://localhost:8080/user/profile", {
+            headers: {
+              Authorization: `Bearer ${sessionStorage.authToken}`,
+            },
+          })
+          .then((response) => {
+            setUserDetails(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   if (!userDetails) {
     return <>Loading...</>;
   }
-
-  console.log(userDetails);
 
   return (
     <div className="profile">
@@ -37,7 +55,9 @@ export default function Profile({ userDetails, setUserDetails }) {
           userDetails.songs.map((song) => {
             return (
               <div className="profile__list-track" key={song.id}>
-                <div className="profile__list-track-title">{song.title}</div>
+                <Link to={`https://www.youtube.com/watch?v=${song.videoId}`}>
+                  <div className="profile__list-track-title">{song.title}</div>
+                </Link>
                 <div className="profile__list-track-artists">
                   {song.artists}
                 </div>
@@ -47,16 +67,11 @@ export default function Profile({ userDetails, setUserDetails }) {
                 <div className="profile__list-track-time">
                   {convertMillisecondsToMMSS(song.duration_ms)}
                 </div>
-                <Link to={`https://www.youtube.com/watch?v=${song.videoId}`}>
-                  <div className="profile__list-track-link">Link to video</div>
-                </Link>
                 <button
                   className="profile__list-track-button"
                   value={song.id}
                   onClick={handleOnClick2}
-                >
-                  Remove
-                </button>
+                ></button>
               </div>
             );
           })}

@@ -36,12 +36,12 @@ function obtainSongList(
         songCountFunction(0);
       }
       songListFunction(
-        response.data.slice(pageNumberArg * 15 - 15, pageNumberArg * 15)
+        response.data.slice(pageNumberArg * 10 - 10, pageNumberArg * 10)
       );
       if (
         response.data.slice(
-          (pageNumberArg + 1) * 15 - 15,
-          (pageNumberArg + 1) * 15
+          (pageNumberArg + 1) * 10 - 10,
+          (pageNumberArg + 1) * 10
         ).length === 0
       ) {
         showNextFunction(false);
@@ -50,8 +50,8 @@ function obtainSongList(
       }
       if (
         response.data.slice(
-          (pageNumberArg - 1) * 15 - 15,
-          (pageNumberArg - 1) * 15
+          (pageNumberArg - 1) * 10 - 10,
+          (pageNumberArg - 1) * 10
         ).length === 0
       ) {
         showBackFunction(false);
@@ -71,9 +71,7 @@ function addSongToList(song_id, user_id) {
       song_id,
       user_id,
     })
-    .then((response) => {
-      console.log(response);
-    })
+    .then((response) => {})
     .catch((error) => {
       console.log(error);
     });
@@ -82,9 +80,7 @@ function addSongToList(song_id, user_id) {
 function removeSongFromList(song_id, user_id) {
   axios
     .delete(`http://localhost:8080/user/profile/${user_id}/${song_id}`)
-    .then((response) => {
-      console.log(response);
-    })
+    .then((response) => {})
     .catch((error) => {
       console.log(error);
     });

@@ -3,19 +3,29 @@
   color: #fee;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
+
+  &__welcome {
+    font-size: 36px;
+    margin: 2rem 0;
+  }
 
   &__log-out {
-    color: black;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 28px;
+    color: #fee;
+    margin: 5rem;
+    text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #5744ff, 0 0 0.25em #5744ff,
+      0 0 0.1em #5744ff, 0 3px 1.5px #000;
   }
 
   &__list {
-    font-size: 12px;
+    font-size: 24px;
     display: flex;
     flex-direction: column;
-    height: 322px;
 
     &-track {
       display: flex;
@@ -23,32 +33,38 @@
       width: 100%;
 
       &-title {
-        width: 10rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        width: 16rem;
+        text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #dd44ff, 0 0 0.25em #dd44ff,
+          0 0 0.1em #dd44ff, 0 3px 1.5px #000;
       }
 
       &-artists {
-        width: 7rem;
+        width: 12rem;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
       &-year {
-        width: 2rem;
+        width: 4rem;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
       &-time {
-        width: 2rem;
+        width: 4rem;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
       &-button {
-        color: black;
+        border: none;
+        background: none;
+        width: 24px;
+        cursor: pointer;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url("../../assets/remove.png");
       }
     }
   }

@@ -60,8 +60,6 @@ export default function SongList({
     }
   }
 
-  console.log(userDetails);
-
   return (
     <div className="list">
       {songList.map((song) => {

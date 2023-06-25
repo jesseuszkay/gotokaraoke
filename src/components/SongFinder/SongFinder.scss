@@ -1,3 +1,8 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 @import "animate.css";
 
 .finder {
@@ -6,23 +11,78 @@
   justify-content: center;
 
   &__loading {
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    min-height: 100vh;
+
+    @include desktop {
+      justify-content: center;
+      min-height: none;
+      height: 100%;
+    }
     &-icon {
+      margin-top: 7rem;
       height: 6rem;
       animation: wobble; /* referring directly to the animation's @keyframe declaration */
       animation-duration: 2s; /* don't forget to set a duration! */
       animation-iteration-count: infinite;
+
+      @include desktop {
+        margin-top: 0;
+      }
     }
   }
 
   &__tool {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    height: 360px;
+
+    @include desktop {
+      flex-direction: row;
+      margin-top: 1rem;
+      height: 360px;
+    }
+  }
+
+  &__mobile-buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__song-list {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &__back-button {
+    display: none;
+    @include desktop {
+      display: block;
+    }
+
+    &--mobile {
+      display: block;
+      @include desktop {
+        display: none;
+      }
+    }
+  }
+
+  &__next-button {
+    display: none;
+    @include desktop {
+      display: block;
+    }
+    &--mobile {
+      display: block;
+      @include desktop {
+        display: none;
+      }
+    }
   }
 
   &__button {
@@ -31,8 +91,10 @@
     color: #fee;
     text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #5744ff, 0 0 0.25em #5744ff,
       0 0 0.1em #5744ff, 0 3px 1.5px #000;
-    font-size: 24px;
     margin-right: 10px;
+    @include desktop {
+      font-size: 24px;
+    }
 
     &--hide {
       visibility: hidden;

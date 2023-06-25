@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
+  const [error, setError] = useState(false);
 
   function handleOnSubmit(event) {
     event.preventDefault();
@@ -19,15 +20,11 @@ function Login() {
       })
       .then((response) => {
         sessionStorage.authToken = response.data.token;
+        navigate("/home");
       })
       .catch((err) => {
-        console.log(err);
+        setError(true);
       });
-
-    if (!sessionStorage.getItem("authToken")) {
-      return <div className="">loading!</div>;
-    }
-    navigate("/home");
   }
 
   return (
@@ -39,7 +36,9 @@ function Login() {
           <input
             type="text"
             name="username"
-            className="login__input"
+            className={
+              error ? "login__input login__input--error" : "login__input"
+            }
             autoComplete="off"
           />
         </label>
@@ -48,16 +47,26 @@ function Login() {
           <input
             type="password"
             name="password"
-            className="login__input"
+            className={
+              error ? "login__input login__input--error" : "login__input"
+            }
             autoComplete="off"
           />
         </label>
-
+        <div
+          className={error ? "login__error-text" : "login__error-text--hidden"}
+        >
+          Incorrect username and/or password.
+        </div>
         <button type="submit" className="login__button">
           Enter
         </button>
       </form>
-      <Link to="/signup">Don't have an account? Click here to create one!</Link>
+      <Link to="/signup">
+        <div className="login__signup-link">
+          Don't have an account? Click here to create one!
+        </div>
+      </Link>
     </div>
   );
 }

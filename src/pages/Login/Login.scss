@@ -3,20 +3,19 @@
   color: #fee;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  height: 100vh;
 
   &__form {
     margin-top: 10rem;
     height: 15rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-between;
   }
 
   &__form-title {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-size: 40px;
   }
 
@@ -31,17 +30,37 @@
     font-size: 18px;
     margin-left: 0.5rem;
     padding: 0.25rem 0.5rem;
+    border-radius: 4px;
     color: black;
     border: none;
     flex: 1;
+    &--error {
+      box-shadow: 0 0 20px red;
+    }
+  }
+
+  &__error-text {
+    &--hidden {
+      visibility: hidden;
+    }
   }
 
   &__button {
-    width: 150px;
-    padding: 0.25rem 0.5rem;
-    color: #fee;
-    background-color: transparent;
-    align-self: center;
+    background: none;
+    width: fit-content;
     border: none;
+    cursor: pointer;
+    font-size: 28px;
+    color: #fee;
+    text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #dd44ff, 0 0 0.25em #dd44ff,
+      0 0 0.1em #dd44ff, 0 3px 1.5px #000;
+  }
+
+  &__signup-link {
+    font-size: 20px;
+    margin-top: 2rem;
+    color: #fee;
+    text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #5744ff, 0 0 0.25em #5744ff,
+      0 0 0.1em #5744ff, 0 3px 1.5px #000;
   }
 }

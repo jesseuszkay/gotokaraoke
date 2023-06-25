@@ -11,11 +11,17 @@ function SignUp() {
     const username = event.target.username.value;
     const password = event.target.password.value;
 
-    const response = await axios.post("http://localhost:8080/user/signup", {
-      username,
-      password,
-    });
-    navigate("/login");
+    axios
+      .post("http://localhost:8080/user/signup", {
+        username,
+        password,
+      })
+      .then(() => {
+        navigate("/login");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

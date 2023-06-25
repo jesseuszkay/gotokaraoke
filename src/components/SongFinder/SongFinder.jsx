@@ -62,31 +62,84 @@ export default function SongFinder({
         setShowBack={setShowBack}
       />
       <div className="finder__tool">
+        <div className="finder__mobile-buttons">
+          <button
+            className={`${
+              showBack
+                ? "finder__button finder__back-button--mobile"
+                : "finder__button finder__button--hide finder__back-button--mobile "
+            }`}
+            value="back"
+            onClick={handleOnClick}
+          >
+            {"< Back"}
+          </button>
+          <button
+            className={`${
+              showNext
+                ? "finder__button finder__next-button--mobile "
+                : "finder__button finder__button--hide finder__next-button--mobile"
+            }`}
+            value="next"
+            onClick={handleOnClick}
+          >
+            {"Next >"}
+          </button>
+        </div>
         <button
           className={`${
-            showBack ? "finder__button" : "finder__button finder__button--hide"
+            showBack
+              ? "finder__button finder__back-button"
+              : "finder__button finder__button--hide finder__back-button"
           }`}
           value="back"
           onClick={handleOnClick}
         >
           {"< Back"}
         </button>
-        <SongList
-          songList={songList}
-          isLoggedIn={isLoggedIn}
-          userDetails={userDetails}
-          setUserDetails={setUserDetails}
-        />
-
+        <div className="finder__song-list">
+          <SongList
+            songList={songList}
+            isLoggedIn={isLoggedIn}
+            userDetails={userDetails}
+            setUserDetails={setUserDetails}
+          />
+        </div>
         <button
           className={`${
-            showNext ? "finder__button" : "finder__button finder__button--hide"
+            showNext
+              ? "finder__button finder__next-button "
+              : "finder__button finder__button--hide finder__next-button"
           }`}
           value="next"
           onClick={handleOnClick}
         >
           {"Next >"}
         </button>
+        <div className="finder__mobile-buttons">
+          <button
+            className={`${
+              showBack
+                ? "finder__button finder__back-button--mobile"
+                : "finder__button finder__button--hide finder__back-button--mobile "
+            }`}
+            value="back"
+            onClick={handleOnClick}
+          >
+            {"< Back"}
+          </button>
+          <button
+            className={`${
+              showNext
+                ? "finder__button finder__next-button--mobile "
+                : "finder__button finder__button--hide finder__next-button--mobile"
+            }`}
+            value="next"
+            onClick={handleOnClick}
+          >
+            {"Next >"}
+          </button>
+        </div>
       </div>
     </div>
   );

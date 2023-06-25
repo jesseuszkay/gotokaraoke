@@ -13,8 +13,11 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  @include desktop {
+    height: 100vh;
+    width: 100vw;
+  }
 
   &--landing {
     background-image: url("../src/assets/bg.jpg");
@@ -28,8 +31,11 @@
   &__page {
     display: flex;
     flex-direction: column;
-    margin: 0 10%;
     flex: 1;
+
+    @include desktop {
+      margin: 0 10%;
+    }
   }
 
   &__header {
@@ -37,23 +43,24 @@
     top: 0;
     left: 0;
     right: 0;
+    background-color: rgb(1, 1, 1, 0.7);
 
     @include desktop {
       position: relative;
+      background-color: transparent;
     }
   }
+
   &__content {
     display: flex;
     flex: 1;
-    height: 100vh;
+    padding: 0 10%;
+    @include desktop {
+      padding: 0;
+    }
   }
   &__footer {
     padding: 1rem 0;
-    position: absolute;
-    bottom: 0;
     width: 100%;
-    @include desktop {
-      position: relative;
-    }
   }
 }

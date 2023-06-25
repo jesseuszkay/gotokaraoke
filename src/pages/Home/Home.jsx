@@ -21,39 +21,41 @@ function Home({ isLoggedIn, userDetails, setUserDetails }) {
 
   return (
     <div className="home">
-      <div className="home__selects">
-        <button
-          className={
-            !gridMode
-              ? "home__select home__select-list home__select--selected"
-              : "home__select home__select-list"
-          }
-          value="list"
-          onClick={handleOnClick}
-        >
-          Song List
-        </button>
-        <button
-          className={
-            gridMode
-              ? "home__select home__select-grid home__select--selected"
-              : "home__select home__select-grid"
-          }
-          value="grid"
-          onClick={handleOnClick}
-        >
-          Album Grid
-        </button>
-      </div>
+      <div className="home__content">
+        <div className="home__selects">
+          <button
+            className={
+              !gridMode
+                ? "home__select home__select-list home__select--selected"
+                : "home__select home__select-list"
+            }
+            value="list"
+            onClick={handleOnClick}
+          >
+            Song List
+          </button>
+          <button
+            className={
+              gridMode
+                ? "home__select home__select-grid home__select--selected"
+                : "home__select home__select-grid"
+            }
+            value="grid"
+            onClick={handleOnClick}
+          >
+            Album Grid
+          </button>
+        </div>
 
-      {gridMode && <AlbumGrid />}
-      {!gridMode && (
-        <SongFinder
-          isLoggedIn={isLoggedIn}
-          userDetails={userDetails}
-          setUserDetails={setUserDetails}
-        />
-      )}
+        {gridMode && <AlbumGrid />}
+        {!gridMode && (
+          <SongFinder
+            isLoggedIn={isLoggedIn}
+            userDetails={userDetails}
+            setUserDetails={setUserDetails}
+          />
+        )}
+      </div>
     </div>
   );
 }
