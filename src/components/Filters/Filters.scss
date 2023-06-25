@@ -53,6 +53,7 @@
     display: flex;
     &-text {
       width: 3.25rem;
+      margin-top: 1.5px;
       @include desktop {
         width: auto;
       }
@@ -65,7 +66,6 @@
     padding: 2px 5px;
     flex: 1;
     @include desktop {
-      flex: 0;
       width: 6rem;
     }
   }
@@ -77,17 +77,22 @@
   }
 
   &__button {
-    background: #5744ff;
-    box-shadow: 0 0 10px #5744ff;
+    line-height: 20px;
+    background: none;
+    text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #5744ff, 0 0 0.25em #5744ff,
+      0 0 0.1em #5744ff, 0 3px 1.5px #000;
     border: none;
     color: #fee;
     font-size: 18px;
-    padding: 2px 5px;
+    padding: 3.5px 5px 2px 5px;
     border-radius: 4px;
   }
 
   &__song-count {
-    margin-top: 2rem;
     font-size: 20px;
+
+    @include desktop {
+      margin-top: 2rem;
+    }
   }
 }

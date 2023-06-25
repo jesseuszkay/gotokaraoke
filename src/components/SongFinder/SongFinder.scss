@@ -48,8 +48,9 @@
   }
 
   &__mobile-buttons {
+    margin: 1rem 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   &__song-list {
@@ -65,7 +66,8 @@
     }
 
     &--mobile {
-      display: block;
+      display: flex;
+      font-size: 24px;
       @include desktop {
         display: none;
       }
@@ -79,6 +81,7 @@
     }
     &--mobile {
       display: block;
+      font-size: 24px;
       @include desktop {
         display: none;
       }

@@ -24,6 +24,7 @@ export default function SongFinder({
     } else if (event.target.value === "back" && showBack) {
       setPageNumber((prev) => prev - 1);
     }
+    window.scrollTo({ top: 0 });
   }
 
   useEffect(() => {
@@ -72,7 +73,7 @@ export default function SongFinder({
             value="back"
             onClick={handleOnClick}
           >
-            {"< Back"}
+            {"Back"}
           </button>
           <button
             className={`${
@@ -83,7 +84,7 @@ export default function SongFinder({
             value="next"
             onClick={handleOnClick}
           >
-            {"Next >"}
+            {"Next"}
           </button>
         </div>
         <button
@@ -95,7 +96,7 @@ export default function SongFinder({
           value="back"
           onClick={handleOnClick}
         >
-          {"< Back"}
+          {"Back"}
         </button>
         <div className="finder__song-list">
           <SongList
@@ -114,7 +115,7 @@ export default function SongFinder({
           value="next"
           onClick={handleOnClick}
         >
-          {"Next >"}
+          {"Next"}
         </button>
         <div className="finder__mobile-buttons">
           <button
@@ -126,7 +127,7 @@ export default function SongFinder({
             value="back"
             onClick={handleOnClick}
           >
-            {"< Back"}
+            {"Back"}
           </button>
           <button
             className={`${
@@ -137,7 +138,7 @@ export default function SongFinder({
             value="next"
             onClick={handleOnClick}
           >
-            {"Next >"}
+            {"Next"}
           </button>
         </div>
       </div>

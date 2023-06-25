@@ -1,3 +1,8 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 @import url(//fonts.googleapis.com/css?family=Vibur);
 @import url(//fonts.googleapis.com/css?family=Bebas+Neue);
 @import "animate.css";
@@ -22,22 +27,42 @@
   }
 
   &__title {
-    font: 400 19vh "Vibur";
+    font: 400 10vh "Vibur";
     color: #fee;
     text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #dd44ff, 0 0 0.5em #dd44ff,
       0 0 0.1em #dd44ff, 0 10px 3px #000;
 
     &--1 {
-      font: 400 19vh "Vibur";
+      font: 400 10vh "Vibur";
       animation: blink linear infinite 1s;
     }
     &--2 {
-      font: 400 19vh "Vibur";
+      font: 400 10vh "Vibur";
       animation: blink linear infinite 3s;
     }
     &--3 {
-      font: 400 19vh "Vibur";
+      font: 400 10vh "Vibur";
       animation: blink linear infinite 5s;
+    }
+
+    @include desktop {
+      font: 400 19vh "Vibur";
+      color: #fee;
+      text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #dd44ff, 0 0 0.5em #dd44ff,
+        0 0 0.1em #dd44ff, 0 10px 3px #000;
+
+      &--1 {
+        font: 400 19vh "Vibur";
+        animation: blink linear infinite 1s;
+      }
+      &--2 {
+        font: 400 19vh "Vibur";
+        animation: blink linear infinite 3s;
+      }
+      &--3 {
+        font: 400 19vh "Vibur";
+        animation: blink linear infinite 5s;
+      }
     }
   }
 

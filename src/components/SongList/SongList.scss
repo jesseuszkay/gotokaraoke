@@ -4,6 +4,20 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
+.list__track:nth-child(even) {
+  background-color: rgb(221, 68, 255, 0.4);
+  @include desktop {
+    background-color: transparent;
+  }
+}
+
+.list__track:nth-child(odd) {
+  background-color: rgb(87, 68, 255, 0.4);
+  @include desktop {
+    background-color: transparent;
+  }
+}
+
 .list {
   font-size: 20px;
   flex: 1;
@@ -15,17 +29,35 @@
     margin: 0 2rem;
   }
 
+  &__other-track-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    @include desktop {
+      margin-top: 0;
+    }
+  }
   &__track {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    margin-bottom: 0.75rem;
+
+    padding: 10px 10px;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+
     @include desktop {
+      margin-bottom: 0.25rem;
+      border-radius: 0;
+      background-color: transparent;
+      padding: 0;
       flex-direction: row;
     }
 
     &-title {
+      font-size: 24px;
+      padding-right: 0.5rem;
       text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #dd44ff, 0 0 0.25em #dd44ff,
         0 0 0.1em #dd44ff, 0 3px 1.5px #000;
       @include desktop {
@@ -37,6 +69,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      width: 8.5rem;
       @include desktop {
         width: 12rem;
       }
@@ -62,7 +95,7 @@
       background: none;
       cursor: pointer;
       width: 24px;
-      background-position: center;
+      background-position: top;
       background-size: contain;
       background-repeat: no-repeat;
       &--add {

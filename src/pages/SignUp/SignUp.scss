@@ -35,6 +35,9 @@
     color: black;
     border: none;
     flex: 1;
+    &--error {
+      box-shadow: 0 0 20px red;
+    }
   }
 
   &__button {

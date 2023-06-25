@@ -1,10 +1,35 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.profile__list-track:nth-child(even) {
+  background-color: rgb(221, 68, 255, 0.4);
+  @include desktop {
+    background-color: transparent;
+  }
+}
+
+.profile__list-track:nth-child(odd) {
+  background-color: rgb(87, 68, 255, 0.4);
+  @include desktop {
+    background-color: transparent;
+  }
+}
+
 .profile {
   flex: 1;
+  font-size: 20px;
   color: #fee;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
+  margin-top: 10rem;
+
+  @include desktop {
+    margin-top: 0;
+  }
 
   &__welcome {
     font-size: 36px;
@@ -20,41 +45,137 @@
     margin: 5rem;
     text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #5744ff, 0 0 0.25em #5744ff,
       0 0 0.1em #5744ff, 0 3px 1.5px #000;
+    @include desktop {
+      margin: 0;
+      margin-top: 2rem;
+    }
+  }
+
+  &__mobile-buttons {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__back-button {
+    display: none;
+    @include desktop {
+      display: block;
+    }
+
+    &--mobile {
+      display: flex;
+      font-size: 24px;
+      @include desktop {
+        display: none;
+      }
+    }
+  }
+
+  &__next-button {
+    display: none;
+    @include desktop {
+      display: block;
+    }
+    &--mobile {
+      display: block;
+      font-size: 24px;
+      @include desktop {
+        display: none;
+      }
+    }
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    color: #fee;
+    text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #5744ff, 0 0 0.25em #5744ff,
+      0 0 0.1em #5744ff, 0 3px 1.5px #000;
+    margin-right: 10px;
+    @include desktop {
+      font-size: 24px;
+    }
+
+    &--hide {
+      visibility: hidden;
+    }
+  }
+
+  &__song-list-tracks {
+    @include desktop {
+      margin: 0 1rem;
+    }
   }
 
   &__list {
-    font-size: 24px;
     display: flex;
     flex-direction: column;
+    width: 100%;
+
+    @include desktop {
+      flex-direction: row;
+      font-size: 24px;
+      height: 283px;
+      width: auto;
+    }
+
+    &-other-track-info {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+      @include desktop {
+        margin-top: 0;
+      }
+    }
 
     &-track {
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
       width: 100%;
 
+      padding: 10px 10px;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+
+      @include desktop {
+        flex-direction: row;
+      }
+
       &-title {
-        width: 16rem;
+        font-size: 24px;
         text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #dd44ff, 0 0 0.25em #dd44ff,
           0 0 0.1em #dd44ff, 0 3px 1.5px #000;
+        @include desktop {
+          width: 16rem;
+        }
       }
 
       &-artists {
-        width: 12rem;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        width: 8rem;
+        @include desktop {
+          width: 12rem;
+        }
       }
       &-year {
-        width: 4rem;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        @include desktop {
+          width: 4rem;
+        }
       }
       &-time {
-        width: 4rem;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        @include desktop {
+          width: 4rem;
+        }
       }
       &-button {
         border: none;

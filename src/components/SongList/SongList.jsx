@@ -71,33 +71,35 @@ export default function SongList({
             >
               <div className="list__track-title">{song.title}</div>
             </Link>
-            <div className="list__track-artists">{song.artists}</div>
-            <div className="list__track-year">{song.year_released}</div>
-            <div className="list__track-time">
-              {convertMillisecondsToMMSS(song.duration_ms)}
+            <div className="list__other-track-info">
+              <div className="list__track-artists">{song.artists}</div>
+              <div className="list__track-year">{song.year_released}</div>
+              <div className="list__track-time">
+                {convertMillisecondsToMMSS(song.duration_ms)}
+              </div>
+              {isLoggedIn &&
+                !userDetails.songs.some((listSong) => {
+                  return listSong.id === song.id;
+                }) && (
+                  <button
+                    className="list__track-button list__track-button--add"
+                    value={song.id}
+                    id="add"
+                    onClick={handleOnClick}
+                  ></button>
+                )}
+              {isLoggedIn &&
+                userDetails.songs.some((listSong) => {
+                  return listSong.id === song.id;
+                }) && (
+                  <button
+                    className="list__track-button list__track-button--remove"
+                    value={song.id}
+                    id="remove"
+                    onClick={handleOnClick}
+                  ></button>
+                )}
             </div>
-            {isLoggedIn &&
-              !userDetails.songs.some((listSong) => {
-                return listSong.id === song.id;
-              }) && (
-                <button
-                  className="list__track-button list__track-button--add"
-                  value={song.id}
-                  id="add"
-                  onClick={handleOnClick}
-                ></button>
-              )}
-            {isLoggedIn &&
-              userDetails.songs.some((listSong) => {
-                return listSong.id === song.id;
-              }) && (
-                <button
-                  className="list__track-button list__track-button--remove"
-                  value={song.id}
-                  id="remove"
-                  onClick={handleOnClick}
-                ></button>
-              )}
           </div>
         );
       })}

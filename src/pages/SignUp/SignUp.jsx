@@ -5,8 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const navigate = useNavigate();
+  const [signUpError, setSignUpError] = useState(false);
+
   const handleOnSubmit = async (event) => {
     event.preventDefault();
+    setSignUpError(false);
 
     const username = event.target.username.value;
     const password = event.target.password.value;
@@ -20,7 +23,7 @@ function SignUp() {
         navigate("/login");
       })
       .catch((err) => {
-        console.log(err);
+        setSignUpError(true);
       });
   };
 
@@ -33,7 +36,11 @@ function SignUp() {
           <input
             type="text"
             name="username"
-            className="signup__input"
+            className={
+              signUpError
+                ? "signup__input signup__input--error"
+                : "signup__input"
+            }
             autoComplete="off"
           />
         </label>
@@ -42,11 +49,19 @@ function SignUp() {
           <input
             type="password"
             name="password"
-            className="signup__input"
+            className={
+              signUpError
+                ? "signup__input signup__input--error"
+                : "signup__input"
+            }
             autoComplete="off"
           />
         </label>
-
+        {signUpError && (
+          <div className="signup__error-message">
+            This username is already taken. Please choose a different one.
+          </div>
+        )}
         <button type="submit" className="signup__button">
           Create Account
         </button>
