@@ -1,0 +1,16 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.not-found {
+  flex: 1;
+  color: $karaoke-text;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em $karaoke-blue,
+    0 0 0.25em $karaoke-blue, 0 0 0.1em $karaoke-blue, 0 3px 1.5px #000;
+}

@@ -10,7 +10,7 @@ export default function SongList({
   setUserDetails,
 }) {
   if (!songList.length) {
-    return <div className="">Loading...</div>;
+    return <div className=""></div>;
   }
 
   function handleOnClick(event) {

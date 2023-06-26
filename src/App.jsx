@@ -16,6 +16,7 @@ import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import NotFound from "./pages/NotFound/NotFound";
 function App() {
   const location = useLocation();
   const isLandingPage = location.pathname === "/";
@@ -72,6 +73,8 @@ function App() {
 
         <div className="app__content">
           <Routes>
+            <Route path="*" element={<NotFound />} />
+
             <Route path="/" element={<Landing />} />
 
             <Route
