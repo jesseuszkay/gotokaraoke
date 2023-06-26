@@ -28,6 +28,9 @@
     font-size: 18px;
     padding: 1px 3px;
     color: black;
+    &::placeholder {
+      color: black;
+    }
 
     @include desktop {
       padding: 2px 5px;
