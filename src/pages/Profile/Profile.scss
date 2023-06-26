@@ -35,6 +35,12 @@
     margin: 2rem 0;
   }
 
+  &__new-account {
+    background-color: rgb(221, 68, 255, 0.4);
+    border-radius: 4px;
+    padding: 1rem;
+  }
+
   &__log-out {
     background: none;
     border: none;

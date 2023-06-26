@@ -1,3 +1,7 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 @import url(//fonts.googleapis.com/css?family=Bebas+Neue);
 
 .footer {

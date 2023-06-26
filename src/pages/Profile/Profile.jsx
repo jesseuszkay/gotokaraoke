@@ -75,9 +75,8 @@ export default function Profile({ userDetails, setUserDetails }) {
       <div className="profile__welcome">Welcome, {userDetails.username}!</div>
       {!userDetails.songs[0].id && (
         <div className="profile__new-account">
-          {" "}
-          Add some songs to your list by clicking "add to list" on songs in the
-          song profile!
+          Your song list is looking a little empty! Navigate to the Song Finder
+          and click the "+" icons to add songs to your list.
         </div>
       )}
 

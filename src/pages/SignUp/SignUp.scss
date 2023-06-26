@@ -1,3 +1,8 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
 .signup {
   flex: 1;
   color: $karaoke-text;
