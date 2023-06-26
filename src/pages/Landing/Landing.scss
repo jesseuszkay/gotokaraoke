@@ -1,6 +1,5 @@
 @use "../../styles/partials/global" as *;
 @use "../../styles/partials/colors" as *;
-@use "../../styles/partials/fonts" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 @import url(//fonts.googleapis.com/css?family=Vibur);
@@ -28,7 +27,7 @@
 
   &__title {
     font: 400 10vh "Vibur";
-    color: #fee;
+    color: $karaoke-text;
     text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #dd44ff, 0 0 0.5em #dd44ff,
       0 0 0.1em #dd44ff, 0 10px 3px #000;
 
@@ -47,7 +46,7 @@
 
     @include desktop {
       font: 400 19vh "Vibur";
-      color: #fee;
+      color: $karaoke-text;
       text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #dd44ff, 0 0 0.5em #dd44ff,
         0 0 0.1em #dd44ff, 0 10px 3px #000;
 
@@ -70,7 +69,7 @@
     font: 400 20px "Bebas Neue";
     border: 0;
     background-color: transparent;
-    color: #fee;
+    color: $karaoke-text;
     animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
     animation-duration: 7s; /* don't forget to set a duration! */
   }

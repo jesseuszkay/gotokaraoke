@@ -1,6 +1,5 @@
 @use "../../styles/partials/global" as *;
 @use "../../styles/partials/colors" as *;
-@use "../../styles/partials/fonts" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 @import "animate.css";
@@ -22,8 +21,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
-    text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #dd44ff, 0 0 0.25em #dd44ff,
-      0 0 0.1em #dd44ff, 0 3px 1.5px #000;
+    text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em $karaoke-pink,
+      0 0 0.25em $karaoke-pink, 0 0 0.1em $karaoke-pink, 0 3px 1.5px #000;
   }
 
   &__album {
@@ -36,7 +35,7 @@
     cursor: pointer;
 
     &:hover {
-      box-shadow: 0 0 30px #5744ff;
+      box-shadow: 0 0 30px $karaoke-blue;
     }
 
     @include desktop {

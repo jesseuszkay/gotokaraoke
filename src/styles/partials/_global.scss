@@ -1,6 +1,5 @@
 @use "./variables" as *;
 @use "./mixins" as *;
-@use "./fonts" as *;
 @use "./colors" as *;
 @import url(//fonts.googleapis.com/css?family=Bebas+Neue);
 
@@ -10,6 +9,30 @@
   box-sizing: border-box;
   list-style-type: none;
   text-decoration: none;
-  color: #fee;
+  color: $karaoke-text;
   font-family: "Bebas Neue";
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include desktop {
+    justify-content: center;
+    min-height: none;
+    height: 100%;
+  }
+
+  &-icon {
+    margin-top: 7rem;
+    height: 6rem;
+    animation: wobble; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
+    animation-iteration-count: infinite;
+
+    @include desktop {
+      margin-top: 0;
+    }
+  }
 }

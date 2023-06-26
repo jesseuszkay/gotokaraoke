@@ -1,3 +1,4 @@
+import "./AlbumGrid.scss";
 import album1 from "../../assets/album-art/album-1.webp";
 import album2 from "../../assets/album-art/album-2.webp";
 import album3 from "../../assets/album-art/album-3.webp";
@@ -13,8 +14,6 @@ import album12 from "../../assets/album-art/album-12.webp";
 import album13 from "../../assets/album-art/album-13.webp";
 import album14 from "../../assets/album-art/album-14.webp";
 import album15 from "../../assets/album-art/album-15.webp";
-
-import "./AlbumGrid.scss";
 
 export default function AlbumGrid({}) {
   return (

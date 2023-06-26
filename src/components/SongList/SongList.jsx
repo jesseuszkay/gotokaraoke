@@ -1,9 +1,4 @@
 import "./SongList.scss";
-import {
-  obtainUserDetails,
-  addSongToList,
-  removeSongFromList,
-} from "../../utils/database";
 import convertMillisecondsToMMSS from "../../utils/ms_to_mins";
 import { Link } from "react-router-dom";
 import axios from "axios";

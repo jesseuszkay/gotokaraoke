@@ -40,12 +40,14 @@ export default function SongFinder({
 
   if (!songList || (isLoggedIn && !userDetails)) {
     return (
-      <div className="finder__loading">
-        <img
-          src={micIcon}
-          alt="Microphone"
-          className="finder__loading-icon animate__tada"
-        />
+      <div className="finder">
+        <div className="finder__loading loading">
+          <img
+            src={micIcon}
+            alt="Microphone"
+            className="loading-icon animate__tada"
+          />
+        </div>
       </div>
     );
   }

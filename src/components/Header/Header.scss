@@ -1,6 +1,5 @@
 @use "../../styles/partials/global" as *;
 @use "../../styles/partials/colors" as *;
-@use "../../styles/partials/fonts" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 @import url(//fonts.googleapis.com/css?family=Bebas+Neue);
@@ -24,7 +23,7 @@
   &__title {
     display: inline;
     font: 400 5vh "Vibur";
-    color: #fee;
+    color: $karaoke-text;
     text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #dd44ff, 0 0 0.25em #dd44ff,
       0 0 0.1em #dd44ff, 0 3px 1.5px #000;
     justify-self: center;
@@ -57,16 +56,16 @@
     }
   }
   &__link {
-    color: #fee;
+    color: $karaoke-text;
     font: 400 20px "Bebas Neue";
     &--active {
-      text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #8244ff, 0 0 0.25em #8244ff,
-        0 0 0.1em #8244ff, 0 3px 1.5px #000;
+      text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em $karaoke-purple,
+        0 0 0.25em $karaoke-purple, 0 0 0.1em $karaoke-purple, 0 3px 1.5px #000;
     }
 
     &:hover {
-      text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #8244ff, 0 0 0.25em #8244ff,
-        0 0 0.1em #8244ff, 0 3px 1.5px #000;
+      text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em $karaoke-purple,
+        0 0 0.25em $karaoke-purple, 0 0 0.1em $karaoke-purple, 0 3px 1.5px #000;
     }
   }
 }

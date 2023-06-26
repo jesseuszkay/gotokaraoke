@@ -6,6 +6,7 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
+import micIcon from "../src/assets/microphone.png";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
@@ -14,7 +15,6 @@ import Profile from "./pages/Profile/Profile";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import { useEffect, useState } from "react";
-import { obtainUserDetails } from "../src/utils/database";
 import axios from "axios";
 function App() {
   const location = useLocation();
@@ -41,7 +41,24 @@ function App() {
   }, [isLoggedIn]);
 
   if (!userDetails && isLoggedIn) {
-    return <div className="">loading</div>;
+    return (
+      <div className="app">
+        <div className="app__page">
+          <div className="app__header">
+            <Header isLoggedIn={isLoggedIn} />
+          </div>
+          <div className="app__content">
+            <div className="app__loading loading">
+              <img
+                src={micIcon}
+                alt="Microphone"
+                className="loading-icon animate__tada"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (

@@ -1,6 +1,6 @@
 .signup {
   flex: 1;
-  color: #fee;
+  color: $karaoke-text;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,7 +46,7 @@
     border: none;
     cursor: pointer;
     font-size: 28px;
-    color: #fee;
+    color: $karaoke-text;
     text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #dd44ff, 0 0 0.25em #dd44ff,
       0 0 0.1em #dd44ff, 0 3px 1.5px #000;
   }

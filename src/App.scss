@@ -1,5 +1,4 @@
 @use "../src/styles/partials/colors" as *;
-@use "../src/styles/partials/fonts" as *;
 @use "../src/styles/partials/global" as *;
 @use "../src/styles/partials/mixins" as *;
 @use "../src/styles/partials/variables" as *;
@@ -17,6 +16,11 @@
   @include desktop {
     height: 100vh;
     width: 100vw;
+  }
+
+  &__loading {
+    justify-content: center;
+    flex: 1;
   }
 
   &--landing {

@@ -1,24 +1,6 @@
 import axios from "axios";
 
-function obtainUserDetails(userDetailsFunction) {
-  const isLoggedIn = !!sessionStorage.authToken;
-  if (isLoggedIn) {
-    axios
-      .get("http://localhost:8080/user/profile", {
-        headers: {
-          Authorization: `Bearer ${sessionStorage.authToken}`,
-        },
-      })
-      .then((response) => {
-        userDetailsFunction(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-}
-
-function obtainSongList(
+export function obtainSongList(
   songFilters,
   pageNumberArg,
   songCountFunction,
@@ -64,26 +46,3 @@ function obtainSongList(
       }
     });
 }
-
-function addSongToList(song_id, user_id) {
-  axios
-    .post(`http://localhost:8080/user/profile/add`, {
-      song_id,
-      user_id,
-    })
-    .then((response) => {})
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
-function removeSongFromList(song_id, user_id) {
-  axios
-    .delete(`http://localhost:8080/user/profile/${user_id}/${song_id}`)
-    .then((response) => {})
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
-export { obtainUserDetails, addSongToList, removeSongFromList, obtainSongList };
