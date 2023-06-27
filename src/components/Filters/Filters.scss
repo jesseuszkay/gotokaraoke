@@ -28,8 +28,14 @@
     font-size: 18px;
     padding: 1px 3px;
     color: black;
+    background-color: $karaoke-text;
+    border: none;
     &::placeholder {
-      color: black;
+      color: $karaoke-placeholder;
+    }
+    &:focus {
+      box-shadow: 0 0 10px $karaoke-blue;
+      outline: 0;
     }
 
     @include desktop {
@@ -64,9 +70,16 @@
 
   &__selects {
     margin-left: 0.5rem;
-    color: black;
+    color: $karaoke-placeholder;
     padding: 2px 5px;
     flex: 1;
+    &::placeholder {
+      color: $karaoke-placeholder;
+    }
+    &--placeholder {
+      color: $karaoke-placeholder;
+    }
+
     @include desktop {
       width: 6rem;
     }

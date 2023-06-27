@@ -13,7 +13,6 @@
   @include desktop {
     margin: 0;
     padding: 3% 10% 3% 10%;
-    /* background-color: rgb(1, 1, 1, 0.7); */
     background-color: rgba(18, 8, 19, 0.73);
     border-radius: 10px;
   }
@@ -25,9 +24,9 @@
 
   &__selects {
     display: flex;
-    justify-content: center;
 
     @include desktop {
+      justify-content: center;
       margin-bottom: 0.5rem;
     }
   }

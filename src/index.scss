@@ -1,0 +1,14 @@
+@use "../src/styles/partials/colors" as *;
+@use "../src/styles/partials/global" as *;
+@use "../src/styles/partials/mixins" as *;
+@use "../src/styles/partials/variables" as *;
+
+#root {
+  @include desktop {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+  }
+}

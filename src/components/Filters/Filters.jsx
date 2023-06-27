@@ -73,6 +73,7 @@ export default function Filters({
           <label className="filters__label">
             <div className="filters__label-text">Genre:</div>
             <select name="genre" className="filters__selects">
+              <option value="">All</option>
               <option value="1">pop</option>
               <option value="2">dance</option>
               <option value="6">new wave</option>
