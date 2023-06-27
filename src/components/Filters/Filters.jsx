@@ -1,29 +1,49 @@
 import "./Filters.scss";
 import { obtainSongList } from "../../utils/database";
+import { useState } from "react";
+import axios from "axios";
 
 export default function Filters({
   songCount,
   pageNumber,
   setPageNumber,
-  setFilters,
   setSongCount,
   setSongList,
+  filters,
+  setFilters,
   setShowNext,
   setShowBack,
 }) {
-  function handleOnSubmit(event) {
-    event.preventDefault();
+  function handleOnChange(event) {
+    const { name, value } = event.target;
+
     setPageNumber(1);
-    const newFilters =
-      "/" +
-      event.target.decades.value +
-      "&" +
-      event.target.length.value +
-      "&" +
-      event.target.genre.value +
-      "&" +
-      event.target.search.value;
+
+    const newFilters = { ...filters, ...{ [name]: value } };
+
     setFilters(newFilters);
+
+    obtainSongList(
+      newFilters,
+      pageNumber,
+      setSongCount,
+      setSongList,
+      setShowBack,
+      setShowNext
+    );
+  }
+
+  function handleOnClick(event) {
+    event.preventDefault();
+    const newFilters = {
+      decades: "",
+      length: "",
+      genre: "",
+      search: "",
+    };
+
+    setFilters(newFilters);
+
     obtainSongList(
       newFilters,
       pageNumber,
@@ -36,18 +56,25 @@ export default function Filters({
 
   return (
     <div className="filters">
-      <form className="filters__form" onSubmit={handleOnSubmit}>
+      <form className="filters__form">
         <input
           type="text"
           name="search"
           placeholder="Search..."
           className="filters__search"
           autoComplete="off"
+          value={filters.search}
+          onChange={handleOnChange}
         />
         <div className="filters__dropdowns">
           <label className="filters__label">
             <div className="filters__label-text">Decade:</div>
-            <select name="decades" className="filters__selects">
+            <select
+              name="decades"
+              className="filters__selects"
+              value={filters.decades}
+              onChange={handleOnChange}
+            >
               <option value="">All</option>
               <option value="1950s">1950s</option>
               <option value="1960s">1960s</option>
@@ -61,7 +88,12 @@ export default function Filters({
           </label>
           <label className="filters__label">
             <div className="filters__label-text">Length:</div>
-            <select name="length" className="filters__selects">
+            <select
+              name="length"
+              className="filters__selects"
+              value={filters.length}
+              onChange={handleOnChange}
+            >
               <option value="">All</option>
               <option value="<2min">Under 2 minutes</option>
               <option value="2-3min">2:00-3:00</option>
@@ -72,7 +104,12 @@ export default function Filters({
           </label>
           <label className="filters__label">
             <div className="filters__label-text">Genre:</div>
-            <select name="genre" className="filters__selects">
+            <select
+              name="genre"
+              className="filters__selects"
+              onChange={handleOnChange}
+              value={filters.genre}
+            >
               <option value="">All</option>
               <option value="1">pop</option>
               <option value="2">dance</option>
@@ -128,14 +165,9 @@ export default function Filters({
             </select>
           </label>
         </div>
-        <div className="filters__buttons">
-          <button type="submit" className="filters__button">
-            Filter Songs
-          </button>
-          <button type="reset" className="filters__button">
-            Reset Filters
-          </button>
-        </div>
+        <button className="filters__button" onClick={handleOnClick}>
+          Reset Filters
+        </button>
       </form>
       {songCount === 0 && (
         <div className="filters__song-count">No songs match your search</div>

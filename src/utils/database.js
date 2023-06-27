@@ -8,8 +8,19 @@ export function obtainSongList(
   showBackFunction,
   showNextFunction
 ) {
+  const filtersURL =
+    "/" +
+    songFilters.decades +
+    "&" +
+    songFilters.length +
+    "&" +
+    songFilters.genre +
+    "&" +
+    songFilters.search;
+
+  console.log(filtersURL);
   axios
-    .get(`http://localhost:8080/songs${songFilters}`)
+    .get(`http://localhost:8080/songs${filtersURL}`)
     .then((response) => {
       if (response.data.length > 0) {
         songCountFunction(response.data.length);

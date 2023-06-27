@@ -16,7 +16,12 @@ export default function SongFinder({
   const [pageNumber, setPageNumber] = useState(1);
   const [showBack, setShowBack] = useState(false);
   const [showNext, setShowNext] = useState(true);
-  const [filters, setFilters] = useState("");
+  const [filters, setFilters] = useState({
+    decades: "",
+    length: "",
+    genre: "",
+    search: "",
+  });
 
   function handleOnClick(event) {
     if (event.target.value === "next" && showNext) {
@@ -58,6 +63,7 @@ export default function SongFinder({
         songCount={songCount}
         pageNumber={pageNumber}
         setPageNumber={setPageNumber}
+        filters={filters}
         setFilters={setFilters}
         setSongCount={setSongCount}
         setSongList={setSongList}
