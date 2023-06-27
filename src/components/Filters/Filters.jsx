@@ -71,7 +71,11 @@ export default function Filters({
             <div className="filters__label-text">Decade:</div>
             <select
               name="decades"
-              className="filters__selects"
+              className={
+                filters.decades === ""
+                  ? "filters__selects filters__selects--placeholder"
+                  : "filters__selects"
+              }
               value={filters.decades}
               onChange={handleOnChange}
             >
@@ -90,7 +94,11 @@ export default function Filters({
             <div className="filters__label-text">Length:</div>
             <select
               name="length"
-              className="filters__selects"
+              className={
+                filters.length === ""
+                  ? "filters__selects filters__selects--placeholder"
+                  : "filters__selects"
+              }
               value={filters.length}
               onChange={handleOnChange}
             >
@@ -106,7 +114,11 @@ export default function Filters({
             <div className="filters__label-text">Genre:</div>
             <select
               name="genre"
-              className="filters__selects"
+              className={
+                filters.genre === ""
+                  ? "filters__selects filters__selects--placeholder"
+                  : "filters__selects"
+              }
               onChange={handleOnChange}
               value={filters.genre}
             >

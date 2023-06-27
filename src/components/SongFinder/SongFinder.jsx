@@ -17,10 +17,10 @@ export default function SongFinder({
   const [showBack, setShowBack] = useState(false);
   const [showNext, setShowNext] = useState(true);
   const [filters, setFilters] = useState({
+    search: "",
     decades: "",
     length: "",
     genre: "",
-    search: "",
   });
 
   function handleOnClick(event) {
