@@ -16,6 +16,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import NotFound from "./pages/NotFound/NotFound";
+
 function App() {
   const location = useLocation();
   const isLandingPage = location.pathname === "/";
@@ -76,6 +77,7 @@ function App() {
                   isLoggedIn={isLoggedIn}
                   userDetails={userDetails}
                   setUserDetails={setUserDetails}
+                  apiURL={apiURL}
                 />
               }
             />
@@ -89,6 +91,7 @@ function App() {
                     userDetails={userDetails}
                     gotDetails={gotDetails}
                     setGotDetails={setGotDetails}
+                    apiURL={apiURL}
                   />
                 ) : (
                   <Navigate replace to="/login" />
@@ -99,11 +102,15 @@ function App() {
             <Route
               path="/login"
               element={
-                isLoggedIn ? <Navigate replace to="/profile" /> : <Login />
+                isLoggedIn ? (
+                  <Navigate replace to="/profile" />
+                ) : (
+                  <Login apiURL={apiURL} />
+                )
               }
             />
 
-            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signup" element={<SignUp apiURL={apiURL} />} />
           </Routes>
         </div>
         {!isLandingPage && (

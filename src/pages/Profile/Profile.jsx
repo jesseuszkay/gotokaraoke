@@ -4,7 +4,7 @@ import convertMillisecondsToMMSS from "../../utils/ms_to_mins";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function Profile({ userDetails, setUserDetails }) {
+export default function Profile({ userDetails, setUserDetails, apiURL }) {
   const navigate = useNavigate();
   const [profilePageNumber, setProfilePageNumber] = useState(1);
   const [showProfileBack, setShowProfileBack] = useState(false);

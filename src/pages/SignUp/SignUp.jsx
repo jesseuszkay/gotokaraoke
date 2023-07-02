@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function SignUp() {
+function SignUp({ apiURL }) {
   const navigate = useNavigate();
   const [signUpError, setSignUpError] = useState(false);
 

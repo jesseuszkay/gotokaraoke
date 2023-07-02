@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({ apiURL }) {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
 

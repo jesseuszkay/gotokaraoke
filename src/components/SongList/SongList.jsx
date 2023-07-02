@@ -8,6 +8,7 @@ export default function SongList({
   isLoggedIn,
   userDetails,
   setUserDetails,
+  apiURL,
 }) {
   if (!songList.length) {
     return <div className=""></div>;

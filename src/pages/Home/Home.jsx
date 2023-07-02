@@ -11,7 +11,7 @@ import Modal from "@mui/material/Modal";
 import "./Home.scss";
 import "../../components/WelcomeModal/WelcomeModal.scss";
 
-function Home({ isLoggedIn, userDetails, setUserDetails }) {
+function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
   const [gridMode, setGridMode] = useState(false);
   const [open, setOpen] = useState(true);
 
@@ -125,6 +125,7 @@ function Home({ isLoggedIn, userDetails, setUserDetails }) {
             isLoggedIn={isLoggedIn}
             userDetails={userDetails}
             setUserDetails={setUserDetails}
+            apiURL={apiURL}
           />
         )}
       </div>

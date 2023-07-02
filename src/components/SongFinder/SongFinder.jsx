@@ -10,6 +10,7 @@ export default function SongFinder({
   isLoggedIn,
   userDetails,
   setUserDetails,
+  apiURL,
 }) {
   const [songList, setSongList] = useState(null);
   const [songCount, setSongCount] = useState(null);
@@ -114,6 +115,7 @@ export default function SongFinder({
             isLoggedIn={isLoggedIn}
             userDetails={userDetails}
             setUserDetails={setUserDetails}
+            apiURL={apiURL}
           />
         </div>
         <button
