@@ -17,6 +17,7 @@ export function obtainSongList(
     songFilters.genre +
     "&" +
     songFilters.search;
+  const apiURL = process.env.REACT_APP_API_URL;
 
   console.log(filtersURL);
   axios
