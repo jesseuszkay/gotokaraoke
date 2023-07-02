@@ -2,6 +2,7 @@ import "./Filters.scss";
 import { obtainSongList } from "../../utils/database";
 import { useState } from "react";
 import axios from "axios";
+import SongList from "../SongList/SongList";
 
 export default function Filters({
   songCount,

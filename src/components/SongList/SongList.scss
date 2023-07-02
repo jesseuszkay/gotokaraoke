@@ -18,14 +18,23 @@
 }
 
 .list {
-  font-size: 20px;
+  font-size: 16px;
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
 
+  @include large-mobile {
+    font-size: 25px;
+  }
+
+  @include tablet {
+    font-size: 40px;
+  }
+
   @include desktop {
-    margin: 0 2rem;
+    font-size: 20px;
+    width: 38rem;
   }
 
   &__other-track-info {
@@ -59,7 +68,17 @@
       padding-right: 0.5rem;
       text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #dd44ff, 0 0 0.25em #dd44ff,
         0 0 0.1em #dd44ff, 0 3px 1.5px #000;
+      width: 14rem;
+      @include large-mobile {
+        font-size: 40px;
+        width: 22rem;
+      }
+      @include tablet {
+        font-size: 50px;
+        width: 40rem;
+      }
       @include desktop {
+        font-size: 24px;
         width: 16rem;
       }
     }
@@ -68,7 +87,13 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      width: 8.5rem;
+      width: 7.5rem;
+      @include large-mobile {
+        width: 12.5rem;
+      }
+      @include tablet {
+        width: 16rem;
+      }
       @include desktop {
         width: 12rem;
       }
@@ -93,8 +118,8 @@
       border: none;
       background: none;
       cursor: pointer;
-      width: 24px;
-      background-position: top;
+      width: 1.5rem;
+      background-position: center;
       background-size: contain;
       background-repeat: no-repeat;
       &--add {
@@ -102,6 +127,10 @@
       }
       &--remove {
         background-image: url("../../assets/remove.png");
+      }
+
+      @include desktop {
+        background-position: top;
       }
     }
   }

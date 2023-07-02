@@ -16,7 +16,7 @@ export default function SongList({
   function handleOnClick(event) {
     const addPromise =
       event.target.id === "add"
-        ? axios.post(`http://localhost:8080/user/profile/add`, {
+        ? axios.post(apiURL + "/user/profile/add", {
             song_id: event.target.value,
             user_id: userDetails.userId,
           })
@@ -25,14 +25,14 @@ export default function SongList({
     const removePromise =
       event.target.id === "remove"
         ? axios.delete(
-            `http://localhost:8080/user/profile/${userDetails.userId}/${event.target.value}`
+            apiURL + `/user/profile/${userDetails.userId}/${event.target.value}`
           )
         : Promise.resolve(); // No operation if event.target.id is not "remove"
 
     Promise.all([addPromise, removePromise])
       .then(() => {
         axios
-          .get("http://localhost:8080/user/profile", {
+          .get(apiURL + "/user/profile", {
             headers: {
               Authorization: `Bearer ${sessionStorage.authToken}`,
             },
@@ -51,7 +51,7 @@ export default function SongList({
 
   if (isLoggedIn) {
     if (!userDetails) {
-      return <div className="">Loading...</div>;
+      return <div className=""></div>;
     }
   }
 

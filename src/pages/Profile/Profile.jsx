@@ -12,18 +12,18 @@ export default function Profile({ userDetails, setUserDetails }) {
 
   function handleOnClick() {
     sessionStorage.clear();
-    navigate("/home");
+    navigate("/");
   }
 
   function handleOnClick2(event) {
     const removePromise = axios.delete(
-      `http://localhost:8080/user/profile/${userDetails.userId}/${event.target.value}`
+      apiURL + `/user/profile/${userDetails.userId}/${event.target.value}`
     );
 
     Promise.all([removePromise])
       .then(() => {
         axios
-          .get("http://localhost:8080/user/profile", {
+          .get(apiURL + "/user/profile", {
             headers: {
               Authorization: `Bearer ${sessionStorage.authToken}`,
             },
@@ -59,7 +59,7 @@ export default function Profile({ userDetails, setUserDetails }) {
   }
 
   if (!userDetails) {
-    return <>Loading...</>;
+    return <></>;
   }
 
   useEffect(() => {

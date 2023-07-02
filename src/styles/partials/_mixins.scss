@@ -2,6 +2,12 @@
 @use "./colors" as *;
 
 // Breakpoint Mixins
+@mixin large-mobile {
+  @media screen and (min-width: $large-mobile-breakpoint) {
+    @content;
+  }
+}
+
 @mixin tablet {
   @media screen and (min-width: $tablet-breakpoint) {
     @content;

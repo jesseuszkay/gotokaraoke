@@ -33,24 +33,26 @@ export default function SongFinder({
   }
 
   useEffect(() => {
-    obtainSongList(
-      filters,
-      pageNumber,
-      setSongCount,
-      setSongList,
-      setShowBack,
-      setShowNext
-    );
+    setTimeout(() => {
+      obtainSongList(
+        filters,
+        pageNumber,
+        setSongCount,
+        setSongList,
+        setShowBack,
+        setShowNext
+      );
+    }, 500);
   }, [pageNumber]);
 
   if (!songList || (isLoggedIn && !userDetails)) {
     return (
       <div className="finder">
-        <div className="finder__loading loading">
+        <div className="finder__loading">
           <img
             src={micIcon}
             alt="Microphone"
-            className="loading-icon animate__tada"
+            className="finder__loading-icon animate__tada"
           />
         </div>
       </div>

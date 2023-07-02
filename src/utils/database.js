@@ -20,9 +20,10 @@ export function obtainSongList(
 
   console.log(filtersURL);
   axios
-    .get(`http://localhost:8080/songs${filtersURL}`)
+    .get(apiURL + `/songs${filtersURL}`)
     .then((response) => {
       if (response.data.length > 0) {
+        console.log(response.data);
         songCountFunction(response.data.length);
       }
       if (response.data.length === 0) {

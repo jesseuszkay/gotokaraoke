@@ -6,7 +6,6 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
-import micIcon from "../src/assets/microphone.png";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
@@ -23,11 +22,12 @@ function App() {
   const isLoggedIn = !!sessionStorage.authToken;
   const [userDetails, setUserDetails] = useState(null);
   const [gotDetails, setGotDetails] = useState(null);
+  const apiURL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     if (isLoggedIn) {
       axios
-        .get("http://localhost:8080/user/profile", {
+        .get(apiURL + "/user/profile", {
           headers: {
             Authorization: `Bearer ${sessionStorage.authToken}`,
           },
@@ -48,15 +48,7 @@ function App() {
           <div className="app__header">
             <Header isLoggedIn={isLoggedIn} />
           </div>
-          <div className="app__content">
-            <div className="app__loading loading">
-              <img
-                src={micIcon}
-                alt="Microphone"
-                className="loading-icon animate__tada"
-              />
-            </div>
-          </div>
+          <div className="app__content"></div>
         </div>
       </div>
     );

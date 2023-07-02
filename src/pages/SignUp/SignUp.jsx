@@ -15,7 +15,7 @@ function SignUp() {
     const password = event.target.password.value;
 
     axios
-      .post("http://localhost:8080/user/signup", {
+      .post(apiURL + "/user/signup", {
         username,
         password,
       })
