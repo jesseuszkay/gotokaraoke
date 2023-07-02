@@ -25,8 +25,6 @@ function App() {
   const [gotDetails, setGotDetails] = useState(null);
   const apiURL = import.meta.env.VITE_API_URL;
 
-  console.log(apiURL);
-
   useEffect(() => {
     if (isLoggedIn) {
       axios
