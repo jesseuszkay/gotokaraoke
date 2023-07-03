@@ -62,10 +62,22 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
               }}
             >
               <div className="welcome-modal-box">
-                <video autoPlay muted loop className="video video--mobile">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsinline
+                  className="video video--mobile"
+                >
                   <source src={tunnelVertical} type="video/mp4" />
                 </video>
-                <video autoPlay muted loop className="video video--desktop">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsinline
+                  className="video video--desktop"
+                >
                   <source src={tunnel} type="video/mp4" />
                 </video>
                 <IconButton
