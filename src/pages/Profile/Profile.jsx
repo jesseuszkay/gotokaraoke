@@ -45,14 +45,12 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
       setProfilePageNumber((prev) => prev + 1);
       setShowProfileBack(true);
       if (profilePageNumber > userDetails.songs.length / 5 - 1) {
-        console.log("next bye");
         setShowProfileNext(false);
       }
     } else if (event.target.value === "back" && showProfileBack) {
       setProfilePageNumber((prev) => prev - 1);
       setShowProfileNext(true);
       if (profilePageNumber === 2) {
-        console.log("back bye");
         setShowProfileBack(false);
       }
     }

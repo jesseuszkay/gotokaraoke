@@ -22,7 +22,6 @@ export function obtainSongList(
     .get(apiURL + `/songs${filtersURL}`)
     .then((response) => {
       if (response.data.length > 0) {
-        console.log(response.data);
         songCountFunction(response.data.length);
       }
       if (response.data.length === 0) {
