@@ -12,7 +12,6 @@ function Header({ isLoggedIn }) {
 
   return (
     <header className="header">
-      <div className="header__user"></div>
       <Link to="/home">
         <div className="header__title">
           <div className="header__title header__title--1">go</div>
@@ -22,11 +21,6 @@ function Header({ isLoggedIn }) {
       </Link>
       <nav className="header__nav">
         <ul className="header__list">
-          <li className="header__list-item">
-            <NavLink className={navLinkActive} to="/home">
-              SONG FINDER
-            </NavLink>
-          </li>
           {isLoggedIn ? (
             <li className="header__list-item">
               <NavLink className={navLinkActive} to="/profile">

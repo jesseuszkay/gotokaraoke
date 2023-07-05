@@ -34,7 +34,6 @@
 
   @include desktop {
     font-size: 20px;
-    width: 38rem;
   }
 
   &__other-track-info {
@@ -110,14 +109,12 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      @include desktop {
-        width: 4rem;
-      }
     }
     &-button {
       border: none;
       background: none;
       cursor: pointer;
+      margin-left: 2rem;
       width: 1.5rem;
       background-position: center;
       background-size: contain;
