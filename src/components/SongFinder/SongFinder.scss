@@ -20,8 +20,8 @@
     height: 30rem;
     &-icon {
       height: 6rem;
-      animation: wobble; /* referring directly to the animation's @keyframe declaration */
-      animation-duration: 1s; /* don't forget to set a duration! */
+      animation: wobble;
+      animation-duration: 1s;
       animation-iteration-count: infinite;
 
       @include desktop {
@@ -61,10 +61,12 @@
     display: none;
     @include desktop {
       display: block;
+      height: 3rem;
     }
 
     &--mobile {
       display: flex;
+      height: 2rem;
       font-size: 24px;
       @include desktop {
         display: none;
@@ -76,9 +78,11 @@
     display: none;
     @include desktop {
       display: block;
+      height: 3rem;
     }
     &--mobile {
       display: block;
+      height: 2rem;
       font-size: 24px;
       @include desktop {
         display: none;
@@ -88,6 +92,7 @@
 
   &__button {
     background: none;
+    z-index: 3;
     border: none;
     color: $karaoke-text;
     text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em $karaoke-blue,

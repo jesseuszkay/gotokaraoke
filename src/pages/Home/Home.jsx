@@ -66,7 +66,7 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
                   autoPlay
                   muted
                   loop
-                  playsinline
+                  playsInline
                   className="video video--mobile"
                 >
                   <source src={tunnelVertical} type="video/mp4" />
@@ -75,7 +75,7 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
                   autoPlay
                   muted
                   loop
-                  playsinline
+                  playsInline
                   className="video video--desktop"
                 >
                   <source src={tunnel} type="video/mp4" />

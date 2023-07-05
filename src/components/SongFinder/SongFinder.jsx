@@ -2,6 +2,8 @@ import "./SongFinder.scss";
 import { useEffect, useState } from "react";
 import React from "react";
 import micIcon from "../../assets/microphone.png";
+import nextArrow from "../../assets/arrow.png";
+import backArrow from "../../assets/backarrow.png";
 import Filters from "../Filters/Filters";
 import SongList from "../SongList/SongList";
 import { obtainSongList } from "../../utils/database";
@@ -25,9 +27,9 @@ export default function SongFinder({
   });
 
   function handleOnClick(event) {
-    if (event.target.value === "next" && showNext) {
+    if (event.target.id === "next" && showNext) {
       setPageNumber((prev) => prev + 1);
-    } else if (event.target.value === "back" && showBack) {
+    } else if (event.target.id === "back" && showBack) {
       setPageNumber((prev) => prev - 1);
     }
     window.scrollTo({ top: 0 });
@@ -75,40 +77,40 @@ export default function SongFinder({
       />
       <div className="finder__tool">
         <div className="finder__mobile-buttons">
-          <button
+          <img
+            src={backArrow}
+            alt="Arrow to previous page"
             className={`${
               showBack
                 ? "finder__button finder__back-button--mobile"
                 : "finder__button finder__button--hide finder__back-button--mobile "
             }`}
-            value="back"
+            id="back"
             onClick={handleOnClick}
-          >
-            {"Back"}
-          </button>
-          <button
+          />
+          <img
+            src={nextArrow}
+            alt="Arrow to next page"
+            onClick={handleOnClick}
+            id="next"
             className={`${
               showNext
-                ? "finder__button finder__next-button--mobile "
-                : "finder__button finder__button--hide finder__next-button--mobile"
+                ? "finder__button finder__next-button--mobile finder__next-button-arrow"
+                : "finder__button finder__button--hide finder__next-button--mobile finder__next-button-arrow"
             }`}
-            value="next"
-            onClick={handleOnClick}
-          >
-            {"Next"}
-          </button>
+          />
         </div>
-        <button
+        <img
+          src={backArrow}
+          alt="Arrow to previous page"
           className={`${
             showBack
               ? "finder__button finder__back-button"
               : "finder__button finder__button--hide finder__back-button"
           }`}
-          value="back"
+          id="back"
           onClick={handleOnClick}
-        >
-          {"Back"}
-        </button>
+        />
         <div className="finder__song-list">
           <SongList
             songList={songList}
@@ -118,40 +120,40 @@ export default function SongFinder({
             apiURL={apiURL}
           />
         </div>
-        <button
+        <img
+          src={nextArrow}
+          alt="Arrow to next page"
+          onClick={handleOnClick}
+          id="next"
           className={`${
             showNext
-              ? "finder__button finder__next-button "
-              : "finder__button finder__button--hide finder__next-button"
+              ? "finder__button finder__next-button finder__next-button-arrow"
+              : "finder__button finder__button--hide finder__next-button finder__next-button-arrow"
           }`}
-          value="next"
-          onClick={handleOnClick}
-        >
-          {"Next"}
-        </button>
+        />
         <div className="finder__mobile-buttons">
-          <button
+          <img
+            src={backArrow}
+            alt="Arrow to previous page"
             className={`${
               showBack
                 ? "finder__button finder__back-button--mobile"
                 : "finder__button finder__button--hide finder__back-button--mobile "
             }`}
-            value="back"
+            id="back"
             onClick={handleOnClick}
-          >
-            {"Back"}
-          </button>
-          <button
+          />
+          <img
+            src={nextArrow}
+            alt="Arrow to next page"
+            onClick={handleOnClick}
+            id="next"
             className={`${
               showNext
-                ? "finder__button finder__next-button--mobile "
-                : "finder__button finder__button--hide finder__next-button--mobile"
+                ? "finder__button finder__next-button--mobile finder__next-button-arrow"
+                : "finder__button finder__button--hide finder__next-button--mobile finder__next-button-arrow"
             }`}
-            value="next"
-            onClick={handleOnClick}
-          >
-            {"Next"}
-          </button>
+          />
         </div>
       </div>
     </div>
