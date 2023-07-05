@@ -9,14 +9,19 @@ import Modal from "@mui/material/Modal";
 import convertMillisecondsToMMSS from "../../utils/ms_to_mins";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
 export default function AlbumGrid({ apiURL }) {
   const [albumModalOpen, setAlbumModalOpen] = useState(false);
+  const [selectedAlbum, setSelectedAlbum] = useState(null);
 
   const handleOnClick = (event) => {
     axios
       .get(apiURL + `/albums/${event.target.id}`)
       .then((response) => {
+        setSelectedAlbum(response.data);
+      })
+      .then(() => {
         setAlbumModalOpen(true);
       })
       .catch((error) => {
@@ -58,7 +63,7 @@ export default function AlbumGrid({ apiURL }) {
 
   const album = {
     title: "Gold",
-    artists: "ABBA",
+    artist: "ABBA",
     image: abba,
   };
 
@@ -100,7 +105,7 @@ export default function AlbumGrid({ apiURL }) {
                 />
                 <div className="album-modal__text">
                   <Typography id="album-modal__title">
-                    {album.title} - {album.artists}
+                    {selectedAlbum.title} - {selectedAlbum.artist}
                   </Typography>
 
                   <div className="album-modal__track-list">
