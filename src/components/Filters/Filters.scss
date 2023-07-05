@@ -71,6 +71,8 @@
   &__selects {
     margin-left: 0.5rem;
     color: black;
+    background-color: #fee;
+    border: none;
     padding: 2px 5px;
     flex: 1;
     &::placeholder {

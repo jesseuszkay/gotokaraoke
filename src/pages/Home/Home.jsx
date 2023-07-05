@@ -131,7 +131,7 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
           </button>
         </div>
 
-        {gridMode && <AlbumGrid />}
+        {gridMode && <AlbumGrid apiURL={apiURL} />}
         {!gridMode && (
           <SongFinder
             isLoggedIn={isLoggedIn}
