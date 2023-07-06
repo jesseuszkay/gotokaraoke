@@ -6,9 +6,9 @@
 .home {
   margin-top: 9.5rem;
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
   width: 100%;
+  /* height: fit-content; */
 
   @include desktop {
     margin: 0;

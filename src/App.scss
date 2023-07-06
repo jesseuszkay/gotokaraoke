@@ -8,12 +8,15 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  background-image: url("../src/assets/hero.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-image: url("../src/assets/bg.jpg");
+  background-size: auto;
+  background-repeat: repeat;
   background-position: center;
   min-height: 100vh;
   @include desktop {
+    background-image: url("../src/assets/hero.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
   }
@@ -59,7 +62,6 @@
     }
   }
   &__footer {
-    padding: 1rem 0;
     width: 100%;
   }
 }

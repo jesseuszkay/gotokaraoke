@@ -47,6 +47,7 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
         {!sessionStorage.getItem("seenModal") && (
           <Modal
             open={open}
+            onClose={handleClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
             sx={{
@@ -131,7 +132,14 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
           </button>
         </div>
 
-        {gridMode && <AlbumGrid apiURL={apiURL} />}
+        {gridMode && (
+          <AlbumGrid
+            apiURL={apiURL}
+            isLoggedIn={isLoggedIn}
+            userDetails={userDetails}
+            setUserDetails={setUserDetails}
+          />
+        )}
         {!gridMode && (
           <SongFinder
             isLoggedIn={isLoggedIn}

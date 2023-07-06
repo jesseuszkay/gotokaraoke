@@ -43,17 +43,17 @@
     }
   }
 
-  &__mobile-buttons {
-    margin: 1rem 0;
-    display: flex;
-    justify-content: space-between;
-  }
-
   &__song-list {
     display: flex;
     flex-direction: column;
     height: 100%;
     align-items: center;
+  }
+
+  &__mobile-buttons {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
   }
 
   &__back-button {

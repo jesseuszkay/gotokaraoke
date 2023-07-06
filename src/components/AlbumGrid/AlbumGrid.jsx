@@ -11,7 +11,12 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function AlbumGrid({ apiURL }) {
+export default function AlbumGrid({
+  apiURL,
+  isLoggedIn,
+  userDetails,
+  setUserDetails,
+}) {
   const [albumModalOpen, setAlbumModalOpen] = useState(false);
   const [selectedAlbum, setSelectedAlbum] = useState(null);
   const [allAlbums, setAllAlbums] = useState(null);
@@ -43,6 +48,42 @@ export default function AlbumGrid({ apiURL }) {
       });
   };
 
+  function handleOnClick2(event) {
+    const addPromise =
+      event.target.id === "add"
+        ? axios.post(apiURL + "/user/profile/add", {
+            song_id: event.target.value,
+            user_id: userDetails.userId,
+          })
+        : Promise.resolve(); // No operation if event.target.id is not "add"
+
+    const removePromise =
+      event.target.id === "remove"
+        ? axios.delete(
+            apiURL + `/user/profile/${userDetails.userId}/${event.target.value}`
+          )
+        : Promise.resolve(); // No operation if event.target.id is not "remove"
+
+    Promise.all([addPromise, removePromise])
+      .then(() => {
+        axios
+          .get(apiURL + "/user/profile", {
+            headers: {
+              Authorization: `Bearer ${sessionStorage.authToken}`,
+            },
+          })
+          .then((response) => {
+            setUserDetails(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   const handleClose = () => {
     setAlbumModalOpen(false);
   };
@@ -70,6 +111,7 @@ export default function AlbumGrid({ apiURL }) {
       {albumModalOpen && (
         <Modal
           open={albumModalOpen}
+          onClose={handleClose}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
           sx={{
@@ -94,7 +136,10 @@ export default function AlbumGrid({ apiURL }) {
                 />
                 <div className="album-modal__text">
                   <Typography id="album-modal__title">
-                    {selectedAlbum.title} - {selectedAlbum.artist}
+                    {selectedAlbum.title}
+                  </Typography>
+                  <Typography id="album-modal__artist">
+                    {selectedAlbum.artist}, {selectedAlbum.year_released}
                   </Typography>
 
                   <div className="album-modal__track-list">
@@ -110,37 +155,31 @@ export default function AlbumGrid({ apiURL }) {
                             </div>
                           </Link>
                           <div className="album-modal__other-track-info">
-                            <div className="album-modal__track-artists">
-                              {song.artist}
-                            </div>
-                            <div className="album-modal__track-year">
-                              {song.year_released}
-                            </div>
                             <div className="album-modal__track-time">
                               {convertMillisecondsToMMSS(song.duration_ms)}
                             </div>
-                            {/*  {isLoggedIn &&
-                                    !userDetails.songs.some((listSong) => {
-                                      return listSong.id === song.id;
-                                    }) && (
-                                      <button
-                                        className="album-modal__track-button album-modal__track-button--add"
-                                        value={song.id}
-                                        id="add"
-                                        onClick={handleOnClick}
-                                      ></button>
-                                    )}
-                                  {isLoggedIn &&
-                                    userDetails.songs.some((listSong) => {
-                                      return listSong.id === song.id;
-                                    }) && (
-                                      <button
-                                        className="album-modal__track-button album-modal__track-button--remove"
-                                        value={song.id}
-                                        id="remove"
-                                        onClick={handleOnClick}
-                                      ></button>
-                                    )} */}
+                            {isLoggedIn &&
+                              !userDetails.songs.some((listSong) => {
+                                return listSong.id === song.id;
+                              }) && (
+                                <button
+                                  className="album-modal__track-button album-modal__track-button--add"
+                                  value={song.id}
+                                  id="add"
+                                  onClick={handleOnClick2}
+                                ></button>
+                              )}
+                            {isLoggedIn &&
+                              userDetails.songs.some((listSong) => {
+                                return listSong.id === song.id;
+                              }) && (
+                                <button
+                                  className="album-modal__track-button album-modal__track-button--remove"
+                                  value={song.id}
+                                  id="remove"
+                                  onClick={handleOnClick2}
+                                ></button>
+                              )}
                           </div>
                         </div>
                       );

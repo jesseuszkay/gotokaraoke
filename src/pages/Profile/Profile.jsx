@@ -1,6 +1,8 @@
 import "./Profile.scss";
 import { useNavigate, Link } from "react-router-dom";
 import convertMillisecondsToMMSS from "../../utils/ms_to_mins";
+import nextArrow from "../../assets/arrow.png";
+import backArrow from "../../assets/backarrow.png";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -41,13 +43,13 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
   }
 
   function handleOnClick3(event) {
-    if (event.target.value === "next" && showProfileNext) {
+    if (event.target.id === "next" && showProfileNext) {
       setProfilePageNumber((prev) => prev + 1);
       setShowProfileBack(true);
       if (profilePageNumber > userDetails.songs.length / 5 - 1) {
         setShowProfileNext(false);
       }
-    } else if (event.target.value === "back" && showProfileBack) {
+    } else if (event.target.id === "back" && showProfileBack) {
       setProfilePageNumber((prev) => prev - 1);
       setShowProfileNext(true);
       if (profilePageNumber === 2) {
@@ -81,40 +83,40 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
       {userDetails.songs[0].id && (
         <div className="profile__list">
           <div className="profile__mobile-buttons">
-            <button
+            <img
+              src={backArrow}
+              alt="Arrow to previous page"
               className={`${
                 showProfileBack
                   ? "profile__button profile__back-button--mobile"
                   : "profile__button profile__button--hide profile__back-button--mobile "
               }`}
-              value="back"
+              id="back"
               onClick={handleOnClick3}
-            >
-              {"Back"}
-            </button>
-            <button
+            />
+            <img
+              src={nextArrow}
+              alt="Arrow to next page"
+              onClick={handleOnClick3}
+              id="next"
               className={`${
                 showProfileNext
-                  ? "profile__button profile__next-button--mobile "
-                  : "profile__button profile__button--hide profile__next-button--mobile"
+                  ? "profile__button profile__next-button--mobile profile__next-button-arrow"
+                  : "profile__button profile__button--hide profile__next-button--mobile profile__next-button-arrow"
               }`}
-              value="next"
-              onClick={handleOnClick3}
-            >
-              {"Next"}
-            </button>
+            />
           </div>
-          <button
+          <img
+            src={backArrow}
+            alt="Arrow to previous page"
             className={`${
               showProfileBack
                 ? "profile__button profile__back-button"
                 : "profile__button profile__button--hide profile__back-button"
             }`}
-            value="back"
+            id="back"
             onClick={handleOnClick3}
-          >
-            {"Back"}
-          </button>
+          />
           <div className="profile__song-list-tracks">
             {userDetails.songs
               .slice(profilePageNumber * 5 - 5, profilePageNumber * 5)
@@ -149,46 +151,56 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
                 );
               })}
           </div>
-          <button
+          <img
+            src={nextArrow}
+            alt="Arrow to next page"
+            onClick={handleOnClick3}
+            id="next"
             className={`${
               showProfileNext
-                ? "profile__button profile__next-button "
-                : "profile__button profile__button--hide profile__next-button"
+                ? "finder__button finder__next-button finder__next-button-arrow"
+                : "finder__button finder__button--hide finder__next-button finder__next-button-arrow"
             }`}
-            value="next"
-            onClick={handleOnClick3}
-          >
-            {"Next"}
-          </button>
-          <div className="profile__mobile-buttons">
-            <button
+          />
+          <div className="finder__mobile-buttons">
+            <img
+              src={backArrow}
+              alt="Arrow to previous page"
               className={`${
                 showProfileBack
-                  ? "profile__button profile__back-button--mobile"
-                  : "profile__button profile__button--hide profile__back-button--mobile "
+                  ? "finder__button finder__back-button--mobile"
+                  : "finder__button finder__button--hide finder__back-button--mobile "
               }`}
-              value="back"
+              id="back"
               onClick={handleOnClick3}
-            >
-              {"Back"}
-            </button>
-            <button
+            />
+            <img
+              src={nextArrow}
+              alt="Arrow to next page"
+              onClick={handleOnClick3}
+              id="next"
               className={`${
                 showProfileNext
-                  ? "profile__button profile__next-button--mobile "
-                  : "profile__button profile__button--hide profile__next-button--mobile"
+                  ? "finder__button finder__next-button--mobile finder__next-button-arrow"
+                  : "finder__button finder__button--hide finder__next-button--mobile finder__next-button-arrow"
               }`}
-              value="next"
-              onClick={handleOnClick3}
-            >
-              {"Next"}
-            </button>
+            />
           </div>
         </div>
       )}
-      <button className="profile__log-out" onClick={handleOnClick}>
-        Log Out
-      </button>
+      <div className="profile__buttons">
+        <button
+          className="profile__back-home"
+          onClick={() => {
+            navigate("/home");
+          }}
+        >
+          Back to song finder
+        </button>
+        <button className="profile__log-out" onClick={handleOnClick}>
+          Log Out
+        </button>
+      </div>
     </div>
   );
 }
