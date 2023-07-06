@@ -38,6 +38,10 @@
     border-radius: 10px;
   }
 
+  &__image {
+    height: 200px;
+  }
+
   &__album-info {
     display: flex;
     margin: 0 2rem 2rem 2rem;
@@ -59,13 +63,13 @@
 
   &__track {
     display: flex;
-    font-size: 30px;
+    font-size: 24px;
 
     &-title {
       padding-right: 0.5rem;
       text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #dd44ff, 0 0 0.25em #dd44ff,
         0 0 0.1em #dd44ff, 0 3px 1.5px #000;
-      width: 14rem;
+      width: 16rem;
     }
 
     &-artists {
@@ -73,15 +77,6 @@
       text-overflow: ellipsis;
       white-space: nowrap;
       width: 7.5rem;
-      @include large-mobile {
-        width: 12.5rem;
-      }
-      @include tablet {
-        width: 16rem;
-      }
-      @include desktop {
-        width: 12rem;
-      }
     }
     &-year {
       overflow: hidden;

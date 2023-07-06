@@ -8,12 +8,25 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import convertMillisecondsToMMSS from "../../utils/ms_to_mins";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function AlbumGrid({ apiURL }) {
   const [albumModalOpen, setAlbumModalOpen] = useState(false);
   const [selectedAlbum, setSelectedAlbum] = useState(null);
+  const [allAlbums, setAllAlbums] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(apiURL + `/albums`)
+      .then((response) => {
+        setAllAlbums(response.data);
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 404) {
+        }
+      });
+  }, []);
 
   const handleOnClick = (event) => {
     axios
@@ -34,49 +47,25 @@ export default function AlbumGrid({ apiURL }) {
     setAlbumModalOpen(false);
   };
 
-  const songs = [
-    {
-      id: 1,
-      title: "cool song",
-      artists: "cool artist",
-      year_released: "2006",
-      duration_ms: 240000,
-      videoId: "ibe2UCSGBlw",
-    },
-    {
-      id: 2,
-      title: "cooler song",
-      artists: "cool artist",
-      year_released: "2006",
-      duration_ms: 240000,
-      videoId: "ibe2UCSGBlw",
-    },
-    {
-      id: 3,
-      title: "coolest song",
-      artists: "cool artist",
-      year_released: "2006",
-      duration_ms: 240000,
-      videoId: "ibe2UCSGBlw",
-    },
-  ];
-
-  const album = {
-    title: "Gold",
-    artist: "ABBA",
-    image: abba,
-  };
+  if (!allAlbums) {
+    return <></>;
+  }
 
   return (
     <>
       <div className="grid">
-        <img
-          src={abba}
-          alt="ABBA Gold Album"
-          className="grid__album"
-          onClick={handleOnClick}
-          id="4"
-        />
+        {allAlbums.map((album) => {
+          return (
+            <img
+              src={album.album_art}
+              alt={album.title}
+              className="grid__album"
+              onClick={handleOnClick}
+              id={album.id}
+              key={album.id}
+            />
+          );
+        })}
       </div>
       {albumModalOpen && (
         <Modal
@@ -99,7 +88,7 @@ export default function AlbumGrid({ apiURL }) {
               </IconButton>
               <div className="album-modal__album-info">
                 <img
-                  src={album.image}
+                  src={selectedAlbum.album_art}
                   alt="ABBA Gold Album"
                   className="album-modal__image"
                 />
@@ -109,7 +98,7 @@ export default function AlbumGrid({ apiURL }) {
                   </Typography>
 
                   <div className="album-modal__track-list">
-                    {songs.map((song) => {
+                    {selectedAlbum.songs.map((song) => {
                       return (
                         <div className="album-modal__track" key={song.id}>
                           <Link
@@ -122,7 +111,7 @@ export default function AlbumGrid({ apiURL }) {
                           </Link>
                           <div className="album-modal__other-track-info">
                             <div className="album-modal__track-artists">
-                              {song.artists}
+                              {song.artist}
                             </div>
                             <div className="album-modal__track-year">
                               {song.year_released}
