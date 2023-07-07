@@ -8,13 +8,15 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  background-image: url("../src/assets/bg.jpg");
+  background-image: url("../src/assets/bg.png");
   background-size: auto;
   background-repeat: repeat;
   background-position: center;
+  backdrop-filter: hue-rotate(290deg);
   min-height: 100vh;
   @include desktop {
     background-image: url("../src/assets/hero.jpg");
+    filter: none;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
@@ -22,7 +24,7 @@
   }
 
   &--landing {
-    background-image: url("../src/assets/bg.jpg");
+    background-image: url("../src/assets/bg.png");
     background-size: auto;
     background-repeat: repeat;
     background-position: center;
