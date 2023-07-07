@@ -45,8 +45,11 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
   function handleOnClick3(event) {
     if (event.target.id === "next" && showProfileNext) {
       setProfilePageNumber((prev) => prev + 1);
+      console.log(profilePageNumber);
       setShowProfileBack(true);
-      if (profilePageNumber > userDetails.songs.length / 5 - 1) {
+      if (profilePageNumber >= userDetails.songs.length / 5 - 1) {
+        console.log(profilePageNumber);
+        console.log(userDetails.songs.length);
         setShowProfileNext(false);
       }
     } else if (event.target.id === "back" && showProfileBack) {
