@@ -21,8 +21,14 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
     const removePromise = axios.delete(
       apiURL + `/user/profile/${userDetails.userId}/${event.target.value}`
     );
+    const changePage = () => {
+      console.log((userDetails.songs.length - 1) % 5);
+      if ((userDetails.songs.length - 1) % 5 === 0) {
+        setProfilePageNumber((prev) => prev - 1);
+      }
+    };
 
-    Promise.all([removePromise])
+    Promise.all([removePromise, changePage()])
       .then(() => {
         axios
           .get(apiURL + "/user/profile", {
@@ -45,11 +51,8 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
   function handleOnClick3(event) {
     if (event.target.id === "next" && showProfileNext) {
       setProfilePageNumber((prev) => prev + 1);
-      console.log(profilePageNumber);
       setShowProfileBack(true);
       if (profilePageNumber >= userDetails.songs.length / 5 - 1) {
-        console.log(profilePageNumber);
-        console.log(userDetails.songs.length);
         setShowProfileNext(false);
       }
     } else if (event.target.id === "back" && showProfileBack) {
@@ -66,10 +69,13 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
   }
 
   useEffect(() => {
-    if (userDetails.songs.length > 5) {
+    if (userDetails.songs.length - 5 * profilePageNumber > 0) {
       setShowProfileNext(true);
     } else {
       setShowProfileNext(false);
+    }
+    if (profilePageNumber === 1) {
+      setShowProfileBack(false);
     }
   }, [userDetails]);
 
