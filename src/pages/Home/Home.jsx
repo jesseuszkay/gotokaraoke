@@ -5,6 +5,8 @@ import songList from "../../assets/help-modal-img/list.png";
 import albumsGrid from "../../assets/help-modal-img/albums.png";
 import songListAdd from "../../assets/help-modal-img/list-add.png";
 import albumsGridAdd from "../../assets/help-modal-img/album-add.png";
+import mobileList from "../../assets/help-modal-img/mobile-list.png";
+import mobileGrid from "../../assets/help-modal-img/mobile-grid.png";
 import tunnel from "../../assets/tunnel.mp4";
 import tunnelVertical from "../../assets/tunnel-vertical.mp4";
 import { useState, useEffect } from "react";
@@ -93,7 +95,7 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
                   <Typography id="help-modal__title">
                     How to use gotokaraoke
                   </Typography>
-                  <div className="help-modal-img-container">
+                  <div className="help-modal-container">
                     <div className="help-modal-img-block">
                       <div className="help-modal-img-container">
                         <img
@@ -109,13 +111,21 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
                           className="help-modal-image help-modal-image--small"
                         />
                       </div>
+                      <div className="help-modal-img-container">
+                        <img
+                          src={mobileGrid}
+                          alt="Preview of song list"
+                          className="help-modal-mobile-image"
+                        />
+                      </div>
                     </div>
                     <Typography id="help-modal__description">
-                      For a quick song search, use our extensive karaoke song
-                      list. Click on any song title to find its karaoke version
-                      on YouTube. You can also browse songs by album covers
-                      (note: this feature is currently being developed and
-                      doesn't include all songs yet).
+                      For a quick song search, use the song list to search,
+                      filter, or simply scroll through gotokaraoke's extensive
+                      karaoke song database. Click on any song title to find its
+                      karaoke version on YouTube. If you prefer a more visual
+                      approach, navigate to "Album Grid" to search for songs by
+                      their album cover.
                     </Typography>
                     <div className="help-modal-img-block">
                       <div className="help-modal-img-container">
@@ -132,17 +142,24 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
                           className="help-modal-image"
                         />
                       </div>
+                      <div className="help-modal-img-container">
+                        <img
+                          src={mobileGrid}
+                          alt="Preview of song list"
+                          className="help-modal-mobile-image"
+                        />
+                      </div>
                     </div>
                     <Typography id="help-modal__description">
                       If you have time, create an account by clicking "LOGIN" in
-                      the upper right navbar and selecting "Don't have an
-                      account? Click here to create one!" Enter a unique
-                      username and password to login. Once logged in, you can
-                      search for songs using the song list or album grid. You
-                      can also add or remove songs from your profile using the
-                      respective icons. Access your profile list by selecting
-                      "PROFILE" in the upper right nav. Your profile list is
-                      securely saved in our database for future use.
+                      the upper right navbar and selecting the link to create an
+                      account. Enter a unique username and password to login.
+                      Once logged in, you can will notice that songs in the song
+                      list and album grid now have "+" and "-" icons which you
+                      can use to add or remove songs from your profile list.
+                      Access your profile list by selecting "PROFILE" in the
+                      upper right nav. Your profile list is securely saved in
+                      gotokaraoke's database for easy access!
                     </Typography>
                   </div>
                 </div>

@@ -7,8 +7,11 @@
 .footer {
   font: 400 14px "Bebas Neue";
   color: $karaoke-text;
+  flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 7rem;
+  height: 100%;
+  max-height: 7rem;
 }

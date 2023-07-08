@@ -16,17 +16,25 @@
 
 #help-modal__title {
   font-family: "Bebas Neue";
-  font-size: 45px;
-  line-height: 40px;
+  font-size: 30px;
+  line-height: 25px;
   margin-bottom: 1rem;
+  @include tablet {
+    font-size: 40px;
+    line-height: 35px;
+  }
 }
 
 #help-modal__description {
   font-family: "Roboto";
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 16px;
+  line-height: 20px;
   border-radius: 10px;
   padding: 0.5rem 0;
+  @include desktop {
+    font-size: 18px;
+    line-height: 20px;
+  }
 }
 
 #help-modal__close-button {
@@ -43,10 +51,28 @@
   overflow: hidden;
   box-shadow: 0 0 5px rgba(255, 238, 238, 0.481);
   border-radius: 10px;
+  @include tablet {
+    width: 500px;
+  }
+  @include desktop {
+    width: 750px;
+  }
 }
 
 .help-modal-text {
-  padding: 0.5rem 2rem 1rem 2rem;
+  padding: 0.25rem 0.5rem 8px 1rem;
+  @include tablet {
+    padding: 0.5rem 2rem 1rem 2rem;
+  }
+}
+.help-modal-container {
+  padding-right: 0.5rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  @include tablet {
+    max-height: none;
+  }
 }
 
 .help-modal-img-block {
@@ -55,11 +81,27 @@
 }
 
 .help-modal-image {
-  width: 550px;
-  height: 220px;
-  margin: 1rem;
-  box-shadow: 0 0 5px rgba(255, 238, 238, 0.481);
+  display: none;
+  @include desktop {
+    display: block;
+    box-shadow: 0 0 5px rgba(255, 238, 238, 0.481);
+    width: 400px;
+    height: 160px;
+  }
   &--small {
-    width: 330px;
+    display: none;
+    @include desktop {
+      display: block;
+      width: 240px;
+    }
+  }
+}
+
+.help-modal-mobile-image {
+  width: 250px;
+  height: 100px;
+  box-shadow: 0 0 5px rgba(255, 238, 238, 0.481);
+  @include desktop {
+    display: none;
   }
 }
