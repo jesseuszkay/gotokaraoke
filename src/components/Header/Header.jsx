@@ -24,7 +24,7 @@ function Header({ isLoggedIn }) {
           {isLoggedIn ? (
             <li className="header__list-item">
               <NavLink className={navLinkActive} to="/profile">
-                Profile
+                My Saved Songs
               </NavLink>
             </li>
           ) : (

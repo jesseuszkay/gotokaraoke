@@ -13,6 +13,11 @@
   font-family: "Bebas Neue";
   outline: none;
 }
+
+select {
+  color: black;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   background-color: transparent;
@@ -27,6 +32,6 @@
   border-radius: 3px;
 }
 
-body {
+/* body {
   overflow: hidden;
-}
+} */
