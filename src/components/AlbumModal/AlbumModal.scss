@@ -16,15 +16,33 @@
 
 #album-modal__title {
   font-family: "Bebas Neue";
-  font-size: 60px;
-  line-height: 50px;
+  font-size: 30px;
+  line-height: 25px;
   margin-top: 1rem;
+  margin-right: 1rem;
+  @include tablet {
+    font-size: 40px;
+    line-height: 40px;
+  }
+  @include desktop {
+    font-size: 60px;
+    margin-right: 0;
+    line-height: 50px;
+  }
 }
 #album-modal__artist {
   font-family: "Bebas Neue";
-  font-size: 30px;
-  line-height: 40px;
+  font-size: 17px;
+  line-height: 15px;
   margin-bottom: 1rem;
+  @include tablet {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  @include desktop {
+    font-size: 30px;
+    line-height: 40px;
+  }
 }
 
 #album-modal__close-button {
@@ -44,18 +62,52 @@
     border-radius: 10px;
   }
 
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    @include desktop {
+      display: block;
+    }
+  }
+
   &__image {
-    height: 200px;
+    &--mobile {
+      height: 70px;
+      margin-right: 1rem;
+      display: block;
+      @include tablet {
+        height: 100px;
+      }
+      @include desktop {
+        display: none;
+      }
+    }
+    &--desktop {
+      height: 200px;
+      display: none;
+      @include desktop {
+        display: block;
+      }
+    }
   }
 
   &__album-info {
     display: flex;
-    margin: 0 2rem 2rem 2rem;
+    margin: 0 0.5rem 0.5rem 1rem;
     align-items: flex-start;
+    @include tablet {
+      margin: 0 1rem 1rem 2rem;
+    }
+    @include desktop {
+      margin: 0 2rem 2rem 2rem;
+    }
   }
 
   &__text {
-    padding: 0 2rem 1rem 2rem;
+    @include desktop {
+      padding: 0 2rem 1rem 2rem;
+    }
   }
 
   &__other-track-info {
@@ -67,9 +119,38 @@
     }
   }
 
+  &__track-list {
+    padding: 1rem;
+    font-size: 18px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-height: 30vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    @include tablet {
+      font-size: 22px;
+    }
+  }
+
   &__track {
     display: flex;
-    font-size: 24px;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+
+    @include desktop {
+      justify-content: space-between;
+      margin-bottom: 0.25rem;
+      border-radius: 0;
+      background-color: transparent;
+      padding: 0;
+      flex-direction: row;
+    }
 
     &-title {
       padding-right: 0.5rem;
@@ -102,6 +183,7 @@
       background: none;
       cursor: pointer;
       margin-left: 2rem;
+      margin-right: 0.5rem;
       width: 1.5rem;
       background-position: center;
       background-size: contain;

@@ -13,3 +13,20 @@
   font-family: "Bebas Neue";
   outline: none;
 }
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #dd44ff87;
+  border-radius: 3px;
+}
+
+body {
+  overflow: hidden;
+}

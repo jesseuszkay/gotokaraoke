@@ -1,5 +1,10 @@
 import SongFinder from "../../components/SongFinder/SongFinder";
 import AlbumGrid from "../../components/AlbumGrid/AlbumGrid";
+import helpButton from "../../assets/help.png";
+import songList from "../../assets/help-modal-img/list.png";
+import albumsGrid from "../../assets/help-modal-img/albums.png";
+import songListAdd from "../../assets/help-modal-img/list-add.png";
+import albumsGridAdd from "../../assets/help-modal-img/album-add.png";
 import tunnel from "../../assets/tunnel.mp4";
 import tunnelVertical from "../../assets/tunnel-vertical.mp4";
 import { useState, useEffect } from "react";
@@ -10,10 +15,12 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import "./Home.scss";
 import "../../components/WelcomeModal/WelcomeModal.scss";
+import "../../components/HelpModal/HelpModal.scss";
 
 function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
   const [gridMode, setGridMode] = useState(false);
   const [open, setOpen] = useState(true);
+  const [help, setHelp] = useState(false);
 
   useEffect(() => {
     const seenModal = sessionStorage.getItem("seenModal");
@@ -27,6 +34,9 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
     setOpen(false);
     sessionStorage.setItem("seenModal", true);
   };
+  const handleClose2 = () => {
+    setHelp(false);
+  };
 
   function handleOnClick(event) {
     if (event.target.value === "list") {
@@ -37,6 +47,10 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
     }
   }
 
+  function handleOnClick2() {
+    setHelp(true);
+  }
+
   if (isLoggedIn && !userDetails) {
     return <div className="App"></div>;
   }
@@ -44,6 +58,98 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
   return (
     <div className="home">
       <div className="home__content">
+        <img
+          src={helpButton}
+          alt="Help Button"
+          className="home__help"
+          onClick={handleOnClick2}
+        />
+        {help && (
+          <Modal
+            open={help}
+            onClose={handleClose2}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+            sx={{
+              // Added inline styling to override the default border
+              border: "none",
+            }}
+          >
+            <Box
+              id="help-modal"
+              sx={{
+                // Added inline styling to override the default border
+                border: "none",
+              }}
+            >
+              <div className="help-modal-box">
+                <IconButton
+                  id="help-modal__close-button"
+                  onClick={handleClose2}
+                >
+                  <CloseIcon />
+                </IconButton>
+                <div className="help-modal-text">
+                  <Typography id="help-modal__title">
+                    How to use gotokaraoke
+                  </Typography>
+                  <div className="help-modal-img-container">
+                    <div className="help-modal-img-block">
+                      <div className="help-modal-img-container">
+                        <img
+                          src={songList}
+                          alt="Preview of song list"
+                          className="help-modal-image"
+                        />
+                      </div>
+                      <div className="help-modal-img-container">
+                        <img
+                          src={albumsGrid}
+                          alt="Preview of song list"
+                          className="help-modal-image help-modal-image--small"
+                        />
+                      </div>
+                    </div>
+                    <Typography id="help-modal__description">
+                      For a quick song search, use our extensive karaoke song
+                      list. Click on any song title to find its karaoke version
+                      on YouTube. You can also browse songs by album covers
+                      (note: this feature is currently being developed and
+                      doesn't include all songs yet).
+                    </Typography>
+                    <div className="help-modal-img-block">
+                      <div className="help-modal-img-container">
+                        <img
+                          src={songListAdd}
+                          alt="Preview of song list"
+                          className="help-modal-image help-modal-image--small"
+                        />
+                      </div>
+                      <div className="help-modal-img-container">
+                        <img
+                          src={albumsGridAdd}
+                          alt="Preview of song list"
+                          className="help-modal-image"
+                        />
+                      </div>
+                    </div>
+                    <Typography id="help-modal__description">
+                      If you have time, create an account by clicking "LOGIN" in
+                      the upper right navbar and selecting "Don't have an
+                      account? Click here to create one!" Enter a unique
+                      username and password to login. Once logged in, you can
+                      search for songs using the song list or album grid. You
+                      can also add or remove songs from your profile using the
+                      respective icons. Access your profile list by selecting
+                      "PROFILE" in the upper right nav. Your profile list is
+                      securely saved in our database for future use.
+                    </Typography>
+                  </div>
+                </div>
+              </div>
+            </Box>
+          </Modal>
+        )}
         {!sessionStorage.getItem("seenModal") && (
           <Modal
             open={open}
@@ -131,7 +237,6 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
             Album Grid
           </button>
         </div>
-
         {gridMode && (
           <AlbumGrid
             apiURL={apiURL}

@@ -39,18 +39,46 @@
   }
 
   &__new-account {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     background-color: rgb(221, 68, 255, 0.4);
     border-radius: 4px;
     padding: 1rem;
+    font-size: 16px;
+    @include tablet {
+      font-size: 28px;
+    }
+    @include desktop {
+      font-size: 22px;
+    }
+    &-text {
+      margin-right: 0.25rem;
+    }
+    &-add-icon {
+      width: 1.1rem;
+      height: 1.1rem;
+      display: inline-block;
+      margin-right: 0.25rem;
+      background-image: url("../../assets/add.png");
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      @include tablet {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
   }
 
   &__buttons {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: 2rem;
     @include desktop {
       flex-direction: row;
-      margin-top: 2rem;
     }
   }
 
@@ -79,6 +107,7 @@
   }
 
   &__mobile-buttons {
+    width: 100%;
     margin: 1rem 0;
     display: flex;
     justify-content: space-between;
@@ -90,7 +119,7 @@
     @include desktop {
       display: block;
       margin-right: 1rem;
-      height: 3rem;
+      height: 2rem;
     }
     &:active {
       animation: heartBeat;
@@ -113,7 +142,7 @@
     @include desktop {
       display: block;
       margin-left: 1rem;
-      height: 3rem;
+      height: 2rem;
     }
     &:active {
       animation: heartBeat;
@@ -146,17 +175,49 @@
       visibility: hidden;
     }
   }
+
   &__song-list-tracks {
+    font-size: 16px;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    @include large-mobile {
+      font-size: 25px;
+    }
+
+    @include tablet {
+      font-size: 40px;
+    }
+
+    @include desktop {
+      font-size: 20px;
+    }
     @include desktop {
       margin: 0 1rem;
     }
   }
 
   &__list {
+    font-size: 16px;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 100%;
+
+    @include large-mobile {
+      font-size: 25px;
+    }
+
+    @include tablet {
+      font-size: 40px;
+    }
+
+    @include desktop {
+      font-size: 20px;
+    }
 
     @include desktop {
       flex-direction: row;
@@ -177,7 +238,7 @@
     &-track {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
       width: 100%;
 
       padding: 10px 10px;
@@ -185,14 +246,29 @@
       margin-bottom: 0.5rem;
 
       @include desktop {
+        margin-bottom: 0.25rem;
+        border-radius: 0;
+        background-color: transparent;
+        padding: 0;
         flex-direction: row;
       }
 
       &-title {
         font-size: 24px;
+        padding-right: 0.5rem;
         text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #dd44ff, 0 0 0.25em #dd44ff,
           0 0 0.1em #dd44ff, 0 3px 1.5px #000;
+        width: 14rem;
+        @include large-mobile {
+          font-size: 40px;
+          width: 22rem;
+        }
+        @include tablet {
+          font-size: 50px;
+          width: 40rem;
+        }
         @include desktop {
+          font-size: 24px;
           width: 16rem;
         }
       }
@@ -201,7 +277,13 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        width: 8rem;
+        width: 7.5rem;
+        @include large-mobile {
+          width: 12.5rem;
+        }
+        @include tablet {
+          width: 16rem;
+        }
         @include desktop {
           width: 12rem;
         }
@@ -218,19 +300,20 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        @include desktop {
-          width: 4rem;
-        }
       }
       &-button {
         border: none;
         background: none;
         width: 24px;
+        margin-left: 2rem;
         cursor: pointer;
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
         background-image: url("../../assets/remove.png");
+        @include desktop {
+          background-position: top;
+        }
       }
     }
   }

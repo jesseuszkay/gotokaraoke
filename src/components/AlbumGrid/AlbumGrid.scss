@@ -11,7 +11,10 @@
   justify-content: center;
   width: 100%;
   overflow-y: hidden;
-  height: 504px;
+
+  @include desktop {
+    height: 504px;
+  }
 
   &__album {
     height: 6rem;

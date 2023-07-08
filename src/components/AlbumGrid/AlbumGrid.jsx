@@ -132,15 +132,24 @@ export default function AlbumGrid({
                 <img
                   src={selectedAlbum.album_art}
                   alt="ABBA Gold Album"
-                  className="album-modal__image"
+                  className="album-modal__image album-modal__image--desktop"
                 />
                 <div className="album-modal__text">
-                  <Typography id="album-modal__title">
-                    {selectedAlbum.title}
-                  </Typography>
-                  <Typography id="album-modal__artist">
-                    {selectedAlbum.artist}, {selectedAlbum.year_released}
-                  </Typography>
+                  <div className="album-modal__header">
+                    <img
+                      src={selectedAlbum.album_art}
+                      alt="ABBA Gold Album"
+                      className="album-modal__image album-modal__image--mobile"
+                    />
+                    <div className="album-modal__details">
+                      <Typography id="album-modal__title">
+                        {selectedAlbum.title}
+                      </Typography>
+                      <Typography id="album-modal__artist">
+                        {selectedAlbum.artist}, {selectedAlbum.year_released}
+                      </Typography>
+                    </div>
+                  </div>
 
                   <div className="album-modal__track-list">
                     {selectedAlbum.songs.map((song) => {

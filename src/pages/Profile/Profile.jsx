@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import convertMillisecondsToMMSS from "../../utils/ms_to_mins";
 import nextArrow from "../../assets/arrow.png";
 import backArrow from "../../assets/backarrow.png";
+import add from "../../assets/add.png";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -84,8 +85,16 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
       <div className="profile__welcome">Welcome, {userDetails.username}!</div>
       {!userDetails.songs[0].id && (
         <div className="profile__new-account">
-          Your song list is looking a little empty! Navigate to the Song Finder
-          and click the "+" icons to add songs to your list.
+          <div className="profile__new-account-text">
+            Your song list is looking a little empty!
+          </div>
+          <div className="profile__new-account-text">
+            Navigate to the Song Finder and click the
+          </div>
+          <div className="profile__new-account-add-icon"></div>
+          <div className="profile__new-account-text">
+            icons to add songs to your list.
+          </div>
         </div>
       )}
 
@@ -167,18 +176,18 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
             id="next"
             className={`${
               showProfileNext
-                ? "finder__button finder__next-button finder__next-button-arrow"
-                : "finder__button finder__button--hide finder__next-button finder__next-button-arrow"
+                ? "profile__button profile__next-button profile__next-button-arrow"
+                : "profile__button profile__button--hide profile__next-button profile__next-button-arrow"
             }`}
           />
-          <div className="finder__mobile-buttons">
+          <div className="profile__mobile-buttons">
             <img
               src={backArrow}
               alt="Arrow to previous page"
               className={`${
                 showProfileBack
-                  ? "finder__button finder__back-button--mobile"
-                  : "finder__button finder__button--hide finder__back-button--mobile "
+                  ? "profile__button profile__back-button--mobile"
+                  : "profile__button profile__button--hide profile__back-button--mobile "
               }`}
               id="back"
               onClick={handleOnClick3}
@@ -190,8 +199,8 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
               id="next"
               className={`${
                 showProfileNext
-                  ? "finder__button finder__next-button--mobile finder__next-button-arrow"
-                  : "finder__button finder__button--hide finder__next-button--mobile finder__next-button-arrow"
+                  ? "profile__button profile__next-button--mobile profile__next-button-arrow"
+                  : "profile__button profile__button--hide profile__next-button--mobile profile__next-button-arrow"
               }`}
             />
           </div>

@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  /* height: fit-content; */
+  position: relative;
 
   @include desktop {
     margin: 0;
@@ -21,6 +21,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  &__help {
+    width: 1rem;
+    cursor: pointer;
+    &:active {
+      animation: heartBeat;
+      animation-duration: 0.5s;
+      animation-iteration-count: 1;
+    }
+    position: absolute;
+    right: 0;
+    flex: 1;
+    @include large-mobile {
+      width: 1.25rem;
+    }
+    @include tablet {
+      width: 1.5rem;
+    }
+    @include desktop {
+      top: 0.5rem;
+      right: 0.75rem;
+    }
   }
 
   &__selects {
