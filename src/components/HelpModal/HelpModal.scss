@@ -3,7 +3,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 @import url(//fonts.googleapis.com/css?family=Bebas+Neue);
-@import url(//fonts.googleapis.com/css?family=Roboto);
+@import url(//fonts.googleapis.com/css?family=Oswald);
 
 #help-modal {
   position: absolute;
@@ -18,7 +18,7 @@
   font-family: "Bebas Neue";
   font-size: 30px;
   line-height: 25px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   @include tablet {
     font-size: 40px;
     line-height: 35px;
@@ -26,7 +26,7 @@
 }
 
 #help-modal__description {
-  font-family: "Roboto";
+  font-family: "Oswald";
   font-size: 16px;
   line-height: 20px;
   border-radius: 10px;
@@ -56,7 +56,7 @@
     width: 385px;
   }
   @include desktop {
-    width: 800px;
+    width: 820px;
   }
 }
 
@@ -78,7 +78,7 @@
 }
 
 .help-modal-img-block {
-  margin: 0.5rem 0;
+  margin: 1rem 0;
   display: flex;
   justify-content: space-around;
 }

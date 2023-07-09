@@ -3,7 +3,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 @import url(//fonts.googleapis.com/css?family=Bebas+Neue);
-@import url(//fonts.googleapis.com/css?family=Roboto);
+@import url(//fonts.googleapis.com/css?family=Oswald);
 
 #welcome-modal {
   position: absolute;
@@ -22,7 +22,7 @@
 }
 
 #welcome-modal__description {
-  font-family: "Roboto";
+  font-family: "Oswald";
   font-size: 18px;
   border-radius: 10px;
   padding: 0.5rem 0;

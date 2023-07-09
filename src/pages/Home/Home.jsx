@@ -102,15 +102,17 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
                       karaoke song database. Click on any song title to find its
                       karaoke version on YouTube. If you prefer a more visual
                       approach, navigate to "Album Grid" to search for songs by
-                      their album cover. If you have time, create an account by
-                      selecting "LOGIN" and selecting the link to create an
-                      account. Enter a unique username and password to login.
-                      Once logged in, you can will notice that songs in the song
-                      list and album grid now have "+" and "-" icons which you
-                      can use to add or remove songs from your saved songs list.
-                      Access this list by selecting "MY SAVED SONGS". Your
-                      profile list is securely saved in gotokaraoke's database
-                      for easy access!
+                      their album cover.
+                    </Typography>
+                    <Typography id="help-modal__description">
+                      If you have time, create an account by selecting "LOGIN"
+                      and selecting the link to create an account. Enter a
+                      unique username and password to login. Once logged in, you
+                      can will notice that songs in the song list and album grid
+                      now have "+" and "-" icons which you can use to add or
+                      remove songs from your saved songs list. Access this list
+                      by selecting "MY SAVED SONGS". Your profile list is
+                      securely saved in gotokaraoke's database for easy access!
                     </Typography>
                     <div className="help-modal-img-block">
                       <div className="help-modal-img-container">
