@@ -2,11 +2,11 @@ import SongFinder from "../../components/SongFinder/SongFinder";
 import AlbumGrid from "../../components/AlbumGrid/AlbumGrid";
 import helpButton from "../../assets/help.png";
 import songList from "../../assets/help-modal-img/list.png";
-import albumsGrid from "../../assets/help-modal-img/albums.png";
+import albumsGrid from "../../assets/help-modal-img/grid.png";
 import songListAdd from "../../assets/help-modal-img/list-add.png";
-import albumsGridAdd from "../../assets/help-modal-img/album-add.png";
-import mobileList from "../../assets/help-modal-img/mobile-list.png";
-import mobileGrid from "../../assets/help-modal-img/mobile-grid.png";
+import albumsGridAdd from "../../assets/help-modal-img/grid-add.png";
+import mobileList from "../../assets/help-modal-img/list-mobile.png";
+import mobileGrid from "../../assets/help-modal-img/grid-mobile.png";
 import tunnel from "../../assets/tunnel.mp4";
 import tunnelVertical from "../../assets/tunnel-vertical.mp4";
 import { useState, useEffect } from "react";
@@ -96,71 +96,69 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
                     How to use gotokaraoke
                   </Typography>
                   <div className="help-modal-container">
-                    <div className="help-modal-img-block">
-                      <div className="help-modal-img-container">
-                        <img
-                          src={songList}
-                          alt="Preview of song list"
-                          className="help-modal-image"
-                        />
-                      </div>
-                      <div className="help-modal-img-container">
-                        <img
-                          src={albumsGrid}
-                          alt="Preview of song list"
-                          className="help-modal-image help-modal-image--small"
-                        />
-                      </div>
-                      <div className="help-modal-img-container">
-                        <img
-                          src={mobileGrid}
-                          alt="Preview of song list"
-                          className="help-modal-mobile-image"
-                        />
-                      </div>
-                    </div>
                     <Typography id="help-modal__description">
                       For a quick song search, use the song list to search,
                       filter, or simply scroll through gotokaraoke's extensive
                       karaoke song database. Click on any song title to find its
                       karaoke version on YouTube. If you prefer a more visual
                       approach, navigate to "Album Grid" to search for songs by
-                      their album cover.
+                      their album cover. If you have time, create an account by
+                      selecting "LOGIN" and selecting the link to create an
+                      account. Enter a unique username and password to login.
+                      Once logged in, you can will notice that songs in the song
+                      list and album grid now have "+" and "-" icons which you
+                      can use to add or remove songs from your saved songs list.
+                      Access this list by selecting "MY SAVED SONGS". Your
+                      profile list is securely saved in gotokaraoke's database
+                      for easy access!
                     </Typography>
                     <div className="help-modal-img-block">
                       <div className="help-modal-img-container">
                         <img
-                          src={songListAdd}
-                          alt="Preview of song list"
-                          className="help-modal-image help-modal-image--small"
-                        />
-                      </div>
-                      <div className="help-modal-img-container">
-                        <img
-                          src={albumsGridAdd}
+                          src={albumsGrid}
                           alt="Preview of song list"
                           className="help-modal-image"
                         />
                       </div>
                       <div className="help-modal-img-container">
                         <img
-                          src={mobileGrid}
+                          src={songList}
                           alt="Preview of song list"
-                          className="help-modal-mobile-image"
+                          className="help-modal-image help-modal-image--small"
+                        />
+                      </div>
+
+                      <div className="help-modal-img-container">
+                        <img
+                          src={mobileGrid}
+                          alt="Preview of song grid"
+                          className="help-modal-mobile-image help-modal-mobile-image--grid"
                         />
                       </div>
                     </div>
-                    <Typography id="help-modal__description">
-                      If you have time, create an account by clicking "LOGIN" in
-                      the upper right navbar and selecting the link to create an
-                      account. Enter a unique username and password to login.
-                      Once logged in, you can will notice that songs in the song
-                      list and album grid now have "+" and "-" icons which you
-                      can use to add or remove songs from your saved songs list.
-                      Access this list by selecting "MY SAVED SONGS" in the
-                      upper right nav. Your profile list is securely saved in
-                      gotokaraoke's database for easy access!
-                    </Typography>
+                    <div className="help-modal-img-block">
+                      <div className="help-modal-img-container">
+                        <img
+                          src={albumsGridAdd}
+                          alt="Preview of song list"
+                          className="help-modal-image help-modal-image--small"
+                        />
+                      </div>
+                      <div className="help-modal-img-container">
+                        <img
+                          src={songListAdd}
+                          alt="Preview of song list"
+                          className="help-modal-image "
+                        />
+                      </div>
+                      <div className="help-modal-img-container">
+                        <img
+                          src={mobileList}
+                          alt="Preview of song list"
+                          className="help-modal-mobile-image help-modal-mobile-image--list"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -216,9 +214,9 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
                   </Typography>
                   <Typography id="welcome-modal__description">
                     Urgently need the perfect karaoke song? No problem! Use
-                    gotokaraoke's expert Song Finder to search, filter, and
+                    gotokaraoke's expert song finder to search, filter, and
                     scroll through our curated karaoke tracks. Click on a song
-                    title to open the SingKing Karaoke version on Youtube!
+                    title to open the karaoke version on Youtube!
                   </Typography>
                   <Typography id="welcome-modal__description">
                     Got some time to prep for your next karaoke session? Create

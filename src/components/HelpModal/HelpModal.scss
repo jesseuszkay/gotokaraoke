@@ -46,16 +46,17 @@
 .help-modal-box {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   position: relative;
   width: fit-content;
   overflow: hidden;
   box-shadow: 0 0 5px rgba(255, 238, 238, 0.481);
   border-radius: 10px;
   @include tablet {
-    width: 500px;
+    width: 385px;
   }
   @include desktop {
-    width: 750px;
+    width: 800px;
   }
 }
 
@@ -65,17 +66,19 @@
     padding: 0.5rem 2rem 1rem 2rem;
   }
 }
+
 .help-modal-container {
   padding-right: 0.5rem;
   max-height: 60vh;
   overflow-y: auto;
   overflow-x: hidden;
-  @include tablet {
+  @include desktop {
     max-height: none;
   }
 }
 
 .help-modal-img-block {
+  margin: 0.5rem 0;
   display: flex;
   justify-content: space-around;
 }
@@ -85,22 +88,27 @@
   @include desktop {
     display: block;
     box-shadow: 0 0 5px rgba(255, 238, 238, 0.481);
-    width: 400px;
-    height: 160px;
+    width: 500px;
+    height: 200px;
   }
   &--small {
     display: none;
     @include desktop {
       display: block;
-      width: 240px;
+      width: 200px;
     }
   }
 }
 
 .help-modal-mobile-image {
-  width: 250px;
-  height: 100px;
+  width: 300px;
   box-shadow: 0 0 5px rgba(255, 238, 238, 0.481);
+  &--list {
+    height: 279px;
+  }
+  &--grid {
+    height: 200px;
+  }
   @include desktop {
     display: none;
   }

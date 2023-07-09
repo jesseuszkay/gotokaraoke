@@ -16,6 +16,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import NotFound from "./pages/NotFound/NotFound";
+import { Scrollbars } from "react-custom-scrollbars-2";
 
 function App() {
   const location = useLocation();
