@@ -27,14 +27,13 @@
     width: 100%;
     font-size: 18px;
     padding: 1px 3px;
-    color: black;
-    background-color: $karaoke-text;
+    background-color: black;
+    color: $karaoke-text;
     border: none;
     &::placeholder {
-      color: $karaoke-placeholder;
+      color: $karaoke-text;
     }
     &:focus {
-      box-shadow: 0 0 10px $karaoke-blue;
       outline: 0;
     }
 
@@ -74,12 +73,6 @@
     border: none;
     padding: 2px 5px;
     flex: 1;
-    &::placeholder {
-      color: $karaoke-placeholder;
-    }
-    &--placeholder {
-      color: $karaoke-placeholder;
-    }
 
     @include desktop {
       width: 6rem;

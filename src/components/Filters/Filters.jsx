@@ -15,6 +15,18 @@ export default function Filters({
   setShowNext,
   setShowBack,
 }) {
+  const [placeholder, setPlaceholder] = useState("Search...");
+
+  const handleFocus = () => {
+    setPlaceholder("");
+  };
+
+  const handleBlur = (event) => {
+    if (event.target.value === "") {
+      setPlaceholder("Search...");
+    }
+  };
+
   function handleOnChange(event) {
     const { name, value } = event.target;
 
@@ -61,7 +73,9 @@ export default function Filters({
         <input
           type="text"
           name="search"
-          placeholder="Search..."
+          placeholder={placeholder}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           className="filters__search"
           autoComplete="off"
           value={filters.search}
