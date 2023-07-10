@@ -24,6 +24,12 @@
     box-shadow: 0 0 7px 4px rgba(179, 113, 241, 0.387);
     cursor: pointer;
 
+    &--load-in {
+      animation: flipInY;
+      animation-duration: 1s;
+      animation-iteration-count: 1;
+    }
+
     &:hover {
       animation: headShake;
       animation-duration: 1s;

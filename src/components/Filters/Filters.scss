@@ -73,7 +73,7 @@
     border: none;
     padding: 2px 5px;
     flex: 1;
-
+    cursor: pointer;
     @include desktop {
       width: 6rem;
     }
@@ -90,6 +90,7 @@
     background: none;
     text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em $karaoke-blue,
       0 0 0.25em $karaoke-blue, 0 0 0.1em $karaoke-blue, 0 3px 1.5px #000;
+    cursor: pointer;
     border: none;
     color: $karaoke-text;
     font-size: 18px;

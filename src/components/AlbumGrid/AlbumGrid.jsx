@@ -1,6 +1,5 @@
 import "./AlbumGrid.scss";
 import "../AlbumModal/AlbumModal.scss";
-import abba from "../../assets/album-art/abba.png";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
@@ -20,6 +19,7 @@ export default function AlbumGrid({
   const [albumModalOpen, setAlbumModalOpen] = useState(false);
   const [selectedAlbum, setSelectedAlbum] = useState(null);
   const [allAlbums, setAllAlbums] = useState(null);
+  const [loadIn, setLoadIn] = useState(true);
 
   useEffect(() => {
     axios
@@ -31,6 +31,10 @@ export default function AlbumGrid({
         if (error.response && error.response.status === 404) {
         }
       });
+
+    setTimeout(() => {
+      setLoadIn(false);
+    }, 1000);
   }, []);
 
   const handleOnClick = (event) => {
@@ -100,7 +104,9 @@ export default function AlbumGrid({
             <img
               src={album.album_art}
               alt={album.title}
-              className="grid__album"
+              className={
+                loadIn ? "grid__album grid__album--load-in" : "grid__album"
+              }
               onClick={handleOnClick}
               id={album.id}
               key={album.id}
