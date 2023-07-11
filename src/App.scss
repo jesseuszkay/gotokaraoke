@@ -10,7 +10,7 @@
   position: relative;
   background-image: url("../src/assets/full-res-bg.png");
   background-repeat: repeat;
-  background-position: center;
+  background-position: top;
   min-height: 100vh;
   @include desktop {
     background-image: url("../src/assets/hero.jpg");
@@ -24,7 +24,7 @@
   &--landing {
     background-image: url("../src/assets/low-res-bg.png");
     background-repeat: repeat;
-    background-position: center;
+    background-position: top;
     height: 100vh;
     width: 100vw;
   }
@@ -40,10 +40,6 @@
   }
 
   &__header {
-    /*     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0; */
     background-color: rgb(1, 1, 1, 0.7);
 
     @include desktop {
