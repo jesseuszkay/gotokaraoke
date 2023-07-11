@@ -8,7 +8,7 @@ function Landing() {
 
   useEffect(() => {
     const image = new Image();
-    image.src = "../src/assets/hero.jpg";
+    image.src = "/assets/hero-6dfe585f.jpg";
     image.addEventListener("load", () => {
       setImageLoaded(true);
     });
@@ -33,7 +33,7 @@ function Landing() {
             </div>
           )}
           <img
-            src="../src/assets/hero.jpg"
+            src="/assets/hero-6dfe585f.jpg"
             alt="Background"
             style={{ display: "none" }}
           />
