@@ -63,7 +63,7 @@ function SignUp({ apiURL }) {
           </div>
         )}
         <button type="submit" className="signup__button">
-          Create Account
+          <span>Create Account</span>
         </button>
       </form>
     </div>

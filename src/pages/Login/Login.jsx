@@ -59,7 +59,7 @@ function Login({ apiURL }) {
           Incorrect username and/or password.
         </div>
         <button type="submit" className="login__button">
-          Enter
+          <span>Enter</span>
         </button>
       </form>
       <Link to="/signup">

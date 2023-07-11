@@ -213,10 +213,10 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
             navigate("/home");
           }}
         >
-          Back to song finder
+          <span>Back to song finder</span>
         </button>
         <button className="profile__log-out" onClick={handleOnClick}>
-          Log Out
+          <span>Log Out</span>
         </button>
       </div>
     </div>
