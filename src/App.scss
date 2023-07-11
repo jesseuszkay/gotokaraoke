@@ -9,7 +9,6 @@
   flex-direction: column;
   position: relative;
   background-image: url("../src/assets/full-res-bg.png");
-  background-size: 750px 597px;
   background-repeat: repeat;
   background-position: center;
   min-height: 100vh;
@@ -24,7 +23,6 @@
 
   &--landing {
     background-image: url("../src/assets/low-res-bg.png");
-    background-size: 750px 597px;
     background-repeat: repeat;
     background-position: center;
     height: 100vh;
