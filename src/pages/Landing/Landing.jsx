@@ -6,9 +6,17 @@ function Landing() {
   const navigate = useNavigate();
   const [imageLoaded, setImageLoaded] = useState(false);
 
+  const getImagePath = () => {
+    if (import.meta.env.VITE_APP_ENV === "development") {
+      return "/../src/assets/hero.jpg";
+    } else {
+      return "/assets/hero-6dfe585f.jpg";
+    }
+  };
+
   useEffect(() => {
     const image = new Image();
-    image.src = "/assets/hero-6dfe585f.jpg";
+    image.src = getImagePath();
     image.addEventListener("load", () => {
       setImageLoaded(true);
     });
@@ -33,7 +41,7 @@ function Landing() {
             </div>
           )}
           <img
-            src="/assets/hero-6dfe585f.jpg"
+            src={getImagePath()}
             alt="Background"
             style={{ display: "none" }}
           />
