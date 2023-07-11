@@ -102,6 +102,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+
       @include desktop {
         width: 4rem;
       }
@@ -115,7 +116,7 @@
       border: none;
       background: none;
       cursor: pointer;
-      margin-left: 2rem;
+      margin-left: 1rem;
       width: 1.5rem;
       background-position: center;
       background-size: contain;
@@ -128,6 +129,7 @@
       }
 
       @include desktop {
+        margin-left: 2rem;
         background-position: top;
       }
     }
