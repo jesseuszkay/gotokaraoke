@@ -23,6 +23,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 1s; /* don't forget to set a duration! */
 
   @include large-mobile {
     font-size: 25px;
@@ -112,6 +114,7 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+
     &-button {
       border: none;
       background: none;
@@ -121,6 +124,7 @@
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat;
+
       &--add {
         background-image: url("../../assets/add.png");
       }

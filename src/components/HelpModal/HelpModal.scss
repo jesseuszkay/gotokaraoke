@@ -68,6 +68,8 @@
 }
 
 .help-modal-container {
+  animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
   padding-right: 0.5rem;
   max-height: 60vh;
   overflow-y: auto;

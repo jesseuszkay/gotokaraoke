@@ -7,6 +7,8 @@
 @import "animate.css";
 
 .landing {
+  background-color: #000;
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -26,6 +28,8 @@
 
   &__title {
     font: 400 10vh "Vibur";
+    animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
     color: $karaoke-text;
     text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #dd44ff, 0 0 0.5em #dd44ff,
       0 0 0.1em #dd44ff, 0 10px 3px #000;
@@ -71,7 +75,10 @@
     background-color: transparent;
     color: $karaoke-text;
     animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
-    animation-duration: 7s; /* don't forget to set a duration! */
+    animation-duration: 10s; /* don't forget to set a duration! */
+    &--hidden {
+      visibility: hidden;
+    }
   }
 
   @keyframes blink {

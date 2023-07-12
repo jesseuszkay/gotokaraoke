@@ -36,11 +36,17 @@ function Landing() {
           <span className="landing__title landing__title--3">karaoke</span>
         </div>
         <div>
-          {imageLoaded && (
-            <div onClick={handleEnterClick} className="landing__button">
-              Enter Site
-            </div>
-          )}
+          <div
+            onClick={handleEnterClick}
+            className={
+              imageLoaded
+                ? "landing__button"
+                : "landing__button landing__button--hidden"
+            }
+          >
+            Enter Site
+          </div>
+
           <img
             src={getImagePath()}
             alt="Background"

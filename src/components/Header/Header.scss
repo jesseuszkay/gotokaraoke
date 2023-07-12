@@ -24,26 +24,23 @@
 
   &__title {
     display: inline;
-    font: 400 5vh "Vibur";
+    min-height: 5rem;
     color: $karaoke-text;
     text-shadow: 0 -40px 100px, 0 0 1px, 0 0 1em #dd44ff, 0 0 0.25em #dd44ff,
       0 0 0.1em #dd44ff, 0 3px 1.5px #000;
     justify-self: center;
     cursor: pointer;
-    @include desktop {
-      padding-bottom: none;
-    }
 
     &--1 {
-      font: 400 5vh "Vibur";
+      font: 400 45px "Vibur";
       animation: blink linear infinite 7s;
     }
     &--2 {
-      font: 400 5vh "Vibur";
+      font: 400 45px "Vibur";
       animation: blink linear infinite 6s;
     }
     &--3 {
-      font: 400 5vh "Vibur";
+      font: 400 45px "Vibur";
       animation: blink linear infinite 5s;
     }
   }

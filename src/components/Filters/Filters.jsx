@@ -54,7 +54,7 @@ export default function Filters({
       genre: "",
       search: "",
     };
-
+    setPlaceholder("Search...");
     setFilters(newFilters);
 
     obtainSongList(
