@@ -105,14 +105,15 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
                       their album cover.
                     </Typography>
                     <Typography id="help-modal__description">
-                      If you have time, create an account by selecting "LOGIN"
+                      If you have time, create an account by clicking "LOGIN"
                       and selecting the link to create an account. Enter a
-                      unique username and password to login. Once logged in, you
-                      can will notice that songs in the song list and album grid
-                      now have "+" and "-" icons which you can use to add or
-                      remove songs from your saved songs list. Access this list
-                      by selecting "MY SAVED SONGS". Your profile list is
-                      securely saved in gotokaraoke's database for easy access!
+                      unique username and password, and then re-enter on the
+                      login page. Once logged in, you will notice that songs in
+                      the song list and album grid now have "+" and "-" icons
+                      which you can use to add or remove songs from your saved
+                      songs list. Access this list by selecting "MY SAVED
+                      SONGS". Your profile list is securely saved in
+                      gotokaraoke's database for easy access!
                     </Typography>
                     <div className="help-modal-img-block">
                       <div className="help-modal-img-container">
