@@ -9,7 +9,6 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import "../WelcomeModal/WelcomeModal.scss";
 import "./HelpModal.scss";
 
 function HelpModal({ help, setHelp }) {
