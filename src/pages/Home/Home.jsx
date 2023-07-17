@@ -19,7 +19,7 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
     }
   }, []);
 
-  function handleOnClick(event) {
+  function handleClick(event) {
     if (event.target.value === "list") {
       setGridMode(false);
     }
@@ -28,12 +28,12 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
     }
   }
 
-  function handleOnClick2() {
+  function handleClick2() {
     setHelp(true);
   }
 
   if (isLoggedIn && !userDetails) {
-    return <div className="App"></div>;
+    return <div className="home"></div>;
   }
 
   return (
@@ -43,7 +43,7 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
           src={helpButton}
           alt="Help Button"
           className="home__help"
-          onClick={handleOnClick2}
+          onClick={handleClick2}
         />
         {help && <HelpModal help={help} setHelp={setHelp} />}
         {!sessionStorage.getItem("seenModal") && (
@@ -57,7 +57,7 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
                 : "home__select home__select-list"
             }
             value="list"
-            onClick={handleOnClick}
+            onClick={handleClick}
           >
             Song List
           </button>
@@ -68,7 +68,7 @@ function Home({ isLoggedIn, userDetails, setUserDetails, apiURL }) {
                 : "home__select home__select-grid"
             }
             value="grid"
-            onClick={handleOnClick}
+            onClick={handleClick}
           >
             Album Grid
           </button>

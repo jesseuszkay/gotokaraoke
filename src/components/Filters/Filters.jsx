@@ -46,7 +46,7 @@ export default function Filters({
     );
   }
 
-  function handleOnClick(event) {
+  function handleClick(event) {
     event.preventDefault();
     const newFilters = {
       decades: "",
@@ -192,7 +192,7 @@ export default function Filters({
             </select>
           </label>
         </div>
-        <button className="filters__button" onClick={handleOnClick}>
+        <button className="filters__button" onClick={handleClick}>
           Reset Filters
         </button>
       </form>

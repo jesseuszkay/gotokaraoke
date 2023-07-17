@@ -14,23 +14,6 @@
     width: 710.41px;
   }
 
-  &__loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 30rem;
-    &-icon {
-      height: 6rem;
-      animation: wobble;
-      animation-duration: 1s;
-      animation-iteration-count: infinite;
-
-      @include desktop {
-        margin-top: 0;
-      }
-    }
-  }
-
   &__tool {
     display: flex;
     flex-direction: column;

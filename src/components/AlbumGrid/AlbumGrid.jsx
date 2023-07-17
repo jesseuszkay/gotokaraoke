@@ -31,7 +31,7 @@ export default function AlbumGrid({
     }, 1000);
   }, []);
 
-  const handleOnClick = (event) => {
+  const handleClick = (event) => {
     axios
       .get(apiURL + `/albums/${event.target.id}`)
       .then((response) => {
@@ -61,7 +61,7 @@ export default function AlbumGrid({
               className={
                 loadIn ? "grid__album grid__album--load-in" : "grid__album"
               }
-              onClick={handleOnClick}
+              onClick={handleClick}
               id={album.id}
               key={album.id}
             />

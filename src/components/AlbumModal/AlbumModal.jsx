@@ -17,7 +17,7 @@ export default function AlbumModal({
   userDetails,
   setUserDetails,
 }) {
-  function handleOnClick(event) {
+  function handleClick(event) {
     const addPromise =
       event.target.id === "add"
         ? axios.post(apiURL + "/user/profile/add", {
@@ -124,7 +124,7 @@ export default function AlbumModal({
                               className="album-modal__track-button album-modal__track-button--add"
                               value={song.id}
                               id="add"
-                              onClick={handleOnClick}
+                              onClick={handleClick}
                             ></button>
                           )}
                         {isLoggedIn &&
@@ -135,7 +135,7 @@ export default function AlbumModal({
                               className="album-modal__track-button album-modal__track-button--remove"
                               value={song.id}
                               id="remove"
-                              onClick={handleOnClick}
+                              onClick={handleClick}
                             ></button>
                           )}
                       </div>
