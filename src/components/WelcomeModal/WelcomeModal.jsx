@@ -1,5 +1,5 @@
-import tunnel from "../../assets/tunnel.mp4";
-import tunnelVertical from "../../assets/tunnel-vertical.mp4";
+import tunnel from "../../assets/videos/tunnel.mp4";
+import tunnelVertical from "../../assets/videos/tunnel-vertical.mp4";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";

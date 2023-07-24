@@ -1,9 +1,8 @@
 import "./Profile.scss";
 import { useNavigate, Link } from "react-router-dom";
 import convertMillisecondsToMMSS from "../../utils/ms_to_mins";
-import nextArrow from "../../assets/arrow.png";
-import backArrow from "../../assets/backarrow.png";
-import add from "../../assets/add.png";
+import nextArrow from "../../assets/icons/arrows/arrow.png";
+import backArrow from "../../assets/icons/arrows/backarrow.png";
 import axios from "axios";
 import { useEffect, useState } from "react";
 

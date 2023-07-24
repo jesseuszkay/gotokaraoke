@@ -8,7 +8,7 @@ function Landing() {
 
   const getImagePath = () => {
     if (import.meta.env.VITE_APP_ENV === "development") {
-      return "/../src/assets/hero.jpg";
+      return "/../src/assets/images/backgrounds/hero.jpg";
     } else {
       return "/assets/hero-6dfe585f.jpg";
     }

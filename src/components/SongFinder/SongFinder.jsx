@@ -1,12 +1,12 @@
 import "./SongFinder.scss";
 import { useEffect, useState } from "react";
 import React from "react";
-import nextArrow from "../../assets/arrow.png";
-import backArrow from "../../assets/backarrow.png";
+import nextArrow from "../../assets/icons/arrows/arrow.png";
+import backArrow from "../../assets/icons/arrows/backarrow.png";
 import Filters from "../Filters/Filters";
 import SongList from "../SongList/SongList";
 import LoadingMicrophone from "../LoadingMicrophone/LoadingMicrophone";
-import { obtainSongList } from "../../utils/database";
+import { obtainSongList, obtainTagList } from "../../utils/database";
 
 export default function SongFinder({
   isLoggedIn,
@@ -15,6 +15,7 @@ export default function SongFinder({
   apiURL,
 }) {
   const [songList, setSongList] = useState(null);
+  const [tagList, setTagList] = useState(null);
   const [songCount, setSongCount] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [showBack, setShowBack] = useState(false);
@@ -45,10 +46,11 @@ export default function SongFinder({
         setShowBack,
         setShowNext
       );
+      obtainTagList(setTagList);
     }, 500);
   }, [pageNumber]);
 
-  if (!songList || (isLoggedIn && !userDetails)) {
+  if (!songList || !tagList || (isLoggedIn && !userDetails)) {
     return (
       <div className="finder">
         <LoadingMicrophone />
@@ -65,6 +67,7 @@ export default function SongFinder({
         filters={filters}
         setFilters={setFilters}
         setSongCount={setSongCount}
+        tagList={tagList}
         setSongList={setSongList}
         setShowNext={setShowNext}
         setShowBack={setShowBack}

@@ -1,6 +1,6 @@
 import SongFinder from "../../components/SongFinder/SongFinder";
 import AlbumGrid from "../../components/AlbumGrid/AlbumGrid";
-import helpButton from "../../assets/help.png";
+import helpButton from "../../assets/icons/help.png";
 import { useState, useEffect } from "react";
 import "./Home.scss";
 import HelpModal from "../../components/HelpModal/HelpModal";

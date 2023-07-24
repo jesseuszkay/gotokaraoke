@@ -1,4 +1,4 @@
-import micIcon from "../../assets/microphone.png";
+import micIcon from "../../assets/icons/microphone.png";
 import "./LoadingMicrophone.scss";
 
 export default function LoadingMicrophone() {

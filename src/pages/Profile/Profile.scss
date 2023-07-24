@@ -60,7 +60,7 @@
       height: 1.1rem;
       display: inline-block;
       margin-right: 0.25rem;
-      background-image: url("../../assets/add.png");
+      background-image: url("../../assets/icons/add-to-list/add.png");
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat;
@@ -304,7 +304,7 @@
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
-        background-image: url("../../assets/remove.png");
+        background-image: url("../../assets/icons/add-to-list/remove.png");
         @include desktop {
           background-position: top;
         }
