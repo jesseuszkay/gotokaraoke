@@ -1,9 +1,8 @@
 import "./Profile.scss";
 import { useNavigate, Link } from "react-router-dom";
 import convertMillisecondsToMMSS from "../../utils/ms_to_mins";
-import nextArrow from "../../assets/arrow.png";
-import backArrow from "../../assets/backarrow.png";
-import add from "../../assets/add.png";
+import nextArrow from "../../assets/icons/arrows/arrow.png";
+import backArrow from "../../assets/icons/arrows/backarrow.png";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -13,12 +12,12 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
   const [showProfileBack, setShowProfileBack] = useState(false);
   const [showProfileNext, setShowProfileNext] = useState(false);
 
-  function handleOnClick() {
+  function handleClick() {
     sessionStorage.clear();
     navigate("/");
   }
 
-  function handleOnClick2(event) {
+  function handleClick2(event) {
     const removePromise = axios.delete(
       apiURL + `/user/profile/${userDetails.userId}/${event.target.value}`
     );
@@ -49,7 +48,7 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
       });
   }
 
-  function handleOnClick3(event) {
+  function handleClick3(event) {
     if (event.target.id === "next" && showProfileNext) {
       setProfilePageNumber((prev) => prev + 1);
       setShowProfileBack(true);
@@ -110,12 +109,12 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
                   : "profile__button profile__button--hide profile__back-button--mobile "
               }`}
               id="back"
-              onClick={handleOnClick3}
+              onClick={handleClick3}
             />
             <img
               src={nextArrow}
               alt="Arrow to next page"
-              onClick={handleOnClick3}
+              onClick={handleClick3}
               id="next"
               className={`${
                 showProfileNext
@@ -133,7 +132,7 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
                 : "profile__button profile__button--hide profile__back-button"
             }`}
             id="back"
-            onClick={handleOnClick3}
+            onClick={handleClick3}
           />
           <div className="profile__song-list-tracks">
             {userDetails.songs
@@ -162,7 +161,7 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
                       <button
                         className="profile__list-track-button"
                         value={song.id}
-                        onClick={handleOnClick2}
+                        onClick={handleClick2}
                       ></button>
                     </div>
                   </div>
@@ -172,7 +171,7 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
           <img
             src={nextArrow}
             alt="Arrow to next page"
-            onClick={handleOnClick3}
+            onClick={handleClick3}
             id="next"
             className={`${
               showProfileNext
@@ -190,12 +189,12 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
                   : "profile__button profile__button--hide profile__back-button--mobile "
               }`}
               id="back"
-              onClick={handleOnClick3}
+              onClick={handleClick3}
             />
             <img
               src={nextArrow}
               alt="Arrow to next page"
-              onClick={handleOnClick3}
+              onClick={handleClick3}
               id="next"
               className={`${
                 showProfileNext
@@ -215,7 +214,7 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
         >
           <span>Back to song finder</span>
         </button>
-        <button className="profile__log-out" onClick={handleOnClick}>
+        <button className="profile__log-out" onClick={handleClick}>
           <span>Log Out</span>
         </button>
       </div>

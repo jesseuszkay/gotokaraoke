@@ -126,10 +126,10 @@
       background-repeat: no-repeat;
 
       &--add {
-        background-image: url("../../assets/add.png");
+        background-image: url("../../assets/icons/add-to-list/add.png");
       }
       &--remove {
-        background-image: url("../../assets/remove.png");
+        background-image: url("../../assets/icons/add-to-list/remove.png");
       }
 
       @include desktop {

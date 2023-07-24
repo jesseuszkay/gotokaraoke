@@ -1,14 +1,13 @@
 import "./Filters.scss";
 import { obtainSongList } from "../../utils/database";
 import { useState } from "react";
-import axios from "axios";
-import SongList from "../SongList/SongList";
 
 export default function Filters({
   songCount,
   pageNumber,
   setPageNumber,
   setSongCount,
+  tagList,
   setSongList,
   filters,
   setFilters,
@@ -46,7 +45,7 @@ export default function Filters({
     );
   }
 
-  function handleOnClick(event) {
+  function handleClick(event) {
     event.preventDefault();
     const newFilters = {
       decades: "",
@@ -138,61 +137,17 @@ export default function Filters({
               value={filters.genre}
             >
               <option value="">All</option>
-              <option value="1">pop</option>
-              <option value="2">dance</option>
-              <option value="6">new wave</option>
-              <option value="7">rock</option>
-              <option value="8">alternative</option>
-              <option value="9">alternative rock</option>
-              <option value="10">soundtrack</option>
-              <option value="12">pop rock</option>
-              <option value="13">ska</option>
-              <option value="14">classic rock</option>
-              <option value="16">soul</option>
-              <option value="21">indie</option>
-              <option value="22">indie pop</option>
-              <option value="23">piano</option>
-              <option value="24">rnb</option>
-              <option value="25">oldies</option>
-              <option value="27">country</option>
-              <option value="28">acoustic</option>
-              <option value="29">folk</option>
-              <option value="31">electronic</option>
-              <option value="32">metal</option>
-              <option value="33">gothic metal</option>
-              <option value="34">gothic</option>
-              <option value="35">hard rock</option>
-              <option value="36">rap</option>
-              <option value="38">hip hop</option>
-              <option value="39">nu metal</option>
-              <option value="41">jazz</option>
-              <option value="43">indie rock</option>
-              <option value="45">punk</option>
-              <option value="46">punk rock</option>
-              <option value="47">emo</option>
-              <option value="48">mellow</option>
-              <option value="49">britpop</option>
-              <option value="50">house</option>
-              <option value="51">funk</option>
-              <option value="52">blues</option>
-              <option value="53">blues rock</option>
-              <option value="54">experimental</option>
-              <option value="55">chillout</option>
-              <option value="56">lounge</option>
-              <option value="57">chill</option>
-              <option value="58">electro</option>
-              <option value="59">classical</option>
-              <option value="60">synthpop</option>
-              <option value="61">heavy metal</option>
-              <option value="62">grunge</option>
-              <option value="63">psychedelic</option>
-              <option value="64">reggae</option>
-              <option value="67">j pop</option>
-              <option value="68">new age</option>
+              {tagList.map((tag) => {
+                return (
+                  <option value={tag.id} key={tag.id}>
+                    {tag.tag_name}
+                  </option>
+                );
+              })}
             </select>
           </label>
         </div>
-        <button className="filters__button" onClick={handleOnClick}>
+        <button className="filters__button" onClick={handleClick}>
           Reset Filters
         </button>
       </form>

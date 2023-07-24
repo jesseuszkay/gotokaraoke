@@ -14,7 +14,7 @@ export default function SongList({
     return <div className=""></div>;
   }
 
-  function handleOnClick(event) {
+  function handleClick(event) {
     const addPromise =
       event.target.id === "add"
         ? axios.post(apiURL + "/user/profile/add", {
@@ -81,7 +81,7 @@ export default function SongList({
                     className="list__track-button list__track-button--add"
                     value={song.id}
                     id="add"
-                    onClick={handleOnClick}
+                    onClick={handleClick}
                   ></button>
                 )}
               {isLoggedIn &&
@@ -92,7 +92,7 @@ export default function SongList({
                     className="list__track-button list__track-button--remove"
                     value={song.id}
                     id="remove"
-                    onClick={handleOnClick}
+                    onClick={handleClick}
                   ></button>
                 )}
             </div>

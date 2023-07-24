@@ -1,12 +1,12 @@
 import "./SongFinder.scss";
 import { useEffect, useState } from "react";
 import React from "react";
-import micIcon from "../../assets/microphone.png";
-import nextArrow from "../../assets/arrow.png";
-import backArrow from "../../assets/backarrow.png";
+import nextArrow from "../../assets/icons/arrows/arrow.png";
+import backArrow from "../../assets/icons/arrows/backarrow.png";
 import Filters from "../Filters/Filters";
 import SongList from "../SongList/SongList";
-import { obtainSongList } from "../../utils/database";
+import LoadingMicrophone from "../LoadingMicrophone/LoadingMicrophone";
+import { obtainSongList, obtainTagList } from "../../utils/database";
 
 export default function SongFinder({
   isLoggedIn,
@@ -15,6 +15,7 @@ export default function SongFinder({
   apiURL,
 }) {
   const [songList, setSongList] = useState(null);
+  const [tagList, setTagList] = useState(null);
   const [songCount, setSongCount] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [showBack, setShowBack] = useState(false);
@@ -26,7 +27,7 @@ export default function SongFinder({
     genre: "",
   });
 
-  function handleOnClick(event) {
+  function handleClick(event) {
     if (event.target.id === "next" && showNext) {
       setPageNumber((prev) => prev + 1);
     } else if (event.target.id === "back" && showBack) {
@@ -45,19 +46,14 @@ export default function SongFinder({
         setShowBack,
         setShowNext
       );
+      obtainTagList(setTagList);
     }, 500);
   }, [pageNumber]);
 
-  if (!songList || (isLoggedIn && !userDetails)) {
+  if (!songList || !tagList || (isLoggedIn && !userDetails)) {
     return (
       <div className="finder">
-        <div className="finder__loading">
-          <img
-            src={micIcon}
-            alt="Microphone"
-            className="finder__loading-icon animate__tada"
-          />
-        </div>
+        <LoadingMicrophone />
       </div>
     );
   }
@@ -71,6 +67,7 @@ export default function SongFinder({
         filters={filters}
         setFilters={setFilters}
         setSongCount={setSongCount}
+        tagList={tagList}
         setSongList={setSongList}
         setShowNext={setShowNext}
         setShowBack={setShowBack}
@@ -86,12 +83,12 @@ export default function SongFinder({
                 : "finder__button finder__button--hide finder__back-button--mobile "
             }`}
             id="back"
-            onClick={handleOnClick}
+            onClick={handleClick}
           />
           <img
             src={nextArrow}
             alt="Arrow to next page"
-            onClick={handleOnClick}
+            onClick={handleClick}
             id="next"
             className={`${
               showNext
@@ -109,7 +106,7 @@ export default function SongFinder({
               : "finder__button finder__button--hide finder__back-button"
           }`}
           id="back"
-          onClick={handleOnClick}
+          onClick={handleClick}
         />
         <div className="finder__song-list">
           <SongList
@@ -123,7 +120,7 @@ export default function SongFinder({
         <img
           src={nextArrow}
           alt="Arrow to next page"
-          onClick={handleOnClick}
+          onClick={handleClick}
           id="next"
           className={`${
             showNext
@@ -141,12 +138,12 @@ export default function SongFinder({
                 : "finder__button finder__button--hide finder__back-button--mobile "
             }`}
             id="back"
-            onClick={handleOnClick}
+            onClick={handleClick}
           />
           <img
             src={nextArrow}
             alt="Arrow to next page"
-            onClick={handleOnClick}
+            onClick={handleClick}
             id="next"
             className={`${
               showNext

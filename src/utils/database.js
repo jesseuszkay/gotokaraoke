@@ -1,5 +1,18 @@
 import axios from "axios";
 
+export function obtainTagList(tagListFunction) {
+  const apiURL = import.meta.env.VITE_API_URL;
+  axios
+    .get(apiURL + `/tags`)
+    .then((response) => {
+      tagListFunction(response.data);
+    })
+    .catch((error) => {
+      if (error.response && error.response.status === 404) {
+      }
+    });
+}
+
 export function obtainSongList(
   songFilters,
   pageNumberArg,
