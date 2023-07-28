@@ -5,6 +5,7 @@ import nextArrow from "../../assets/icons/arrows/arrow.png";
 import backArrow from "../../assets/icons/arrows/backarrow.png";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { obtainUserDetails } from "../../utils/database";
 
 export default function Profile({ userDetails, setUserDetails, apiURL }) {
   const navigate = useNavigate();
@@ -30,18 +31,7 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
 
     Promise.all([removePromise, changePage()])
       .then(() => {
-        axios
-          .get(apiURL + "/user/profile", {
-            headers: {
-              Authorization: `Bearer ${sessionStorage.authToken}`,
-            },
-          })
-          .then((response) => {
-            setUserDetails(response.data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        obtainUserDetails(setUserDetails);
       })
       .catch((error) => {
         console.log(error);
