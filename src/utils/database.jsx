@@ -122,3 +122,7 @@ export function logInUser(
       logInErrorFunction(true);
     });
 }
+
+export function removeSongFromList(username, song) {
+  axios.delete(apiURL + `/user/profile/${username}/${song}`);
+}
