@@ -1,9 +1,9 @@
 import "./Login.scss";
 import { useState } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { logInUser } from "../../utils/database";
 
-function Login({ apiURL }) {
+function Login() {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
 
@@ -13,18 +13,7 @@ function Login({ apiURL }) {
     const username = event.target.username.value;
     const password = event.target.password.value;
 
-    axios
-      .post(apiURL + "/user/login", {
-        username,
-        password,
-      })
-      .then((response) => {
-        sessionStorage.authToken = response.data.token;
-        navigate("/home");
-      })
-      .catch((err) => {
-        setError(true);
-      });
+    logInUser(setError, username, password, navigate);
   }
 
   return (

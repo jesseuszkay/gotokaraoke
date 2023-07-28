@@ -102,3 +102,23 @@ export function createUserDetails(
       signUpErrorFunction(true);
     });
 }
+
+export function logInUser(
+  logInErrorFunction,
+  username,
+  password,
+  navigateFunction
+) {
+  axios
+    .post(apiURL + "/user/login", {
+      username,
+      password,
+    })
+    .then((response) => {
+      sessionStorage.authToken = response.data.token;
+      navigateFunction("/home");
+    })
+    .catch((err) => {
+      logInErrorFunction(true);
+    });
+}
