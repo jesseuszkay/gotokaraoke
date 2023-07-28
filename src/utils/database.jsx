@@ -1,7 +1,7 @@
 import axios from "axios";
+const apiURL = import.meta.env.VITE_API_URL;
 
 export function obtainTagList(tagListFunction) {
-  const apiURL = import.meta.env.VITE_API_URL;
   axios
     .get(apiURL + `/tags`)
     .then((response) => {
@@ -30,7 +30,6 @@ export function obtainSongList(
     songFilters.genre +
     "&" +
     songFilters.search;
-  const apiURL = import.meta.env.VITE_API_URL;
   axios
     .get(apiURL + `/songs${filtersURL}`)
     .then((response) => {
@@ -71,7 +70,6 @@ export function obtainSongList(
 }
 
 export function obtainUserDetails(userDetailsFunction) {
-  const apiURL = import.meta.env.VITE_API_URL;
   axios
     .get(apiURL + "/user/profile", {
       headers: {
@@ -83,5 +81,24 @@ export function obtainUserDetails(userDetailsFunction) {
     })
     .catch((error) => {
       console.log(error);
+    });
+}
+
+export function createUserDetails(
+  signUpErrorFunction,
+  username,
+  password,
+  navigateFunction
+) {
+  axios
+    .post(apiURL + "/user/signup", {
+      username,
+      password,
+    })
+    .then(() => {
+      navigateFunction("/login");
+    })
+    .catch((err) => {
+      signUpErrorFunction(true);
     });
 }

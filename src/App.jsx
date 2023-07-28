@@ -14,7 +14,6 @@ import Profile from "./pages/Profile/Profile";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import NotFound from "./pages/NotFound/NotFound";
 import { obtainUserDetails } from "./utils/database";
 
