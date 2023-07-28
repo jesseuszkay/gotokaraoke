@@ -123,6 +123,23 @@ export function logInUser(
     });
 }
 
-export function removeSongFromList(username, song) {
-  axios.delete(apiURL + `/user/profile/${username}/${song}`);
+export function removeSongFromList(user_id, song_id) {
+  return axios
+    .delete(apiURL + `/user/profile/${user_id}/${song_id}`)
+    .catch((error) => {
+      if (error.response && error.response.status === 404) {
+      }
+    });
+}
+
+export function addSongToList(user_id, song_id) {
+  return axios
+    .post(apiURL + "/user/profile/add", {
+      song_id: song_id,
+      user_id: user_id,
+    })
+    .catch((error) => {
+      if (error.response && error.response.status === 404) {
+      }
+    });
 }

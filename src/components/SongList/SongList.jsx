@@ -1,14 +1,17 @@
 import "./SongList.scss";
 import convertMillisecondsToMMSS from "../../utils/ms_to_mins";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import {
+  addSongToList,
+  removeSongFromList,
+  obtainUserDetails,
+} from "../../utils/database";
 
 export default function SongList({
   songList,
   isLoggedIn,
   userDetails,
   setUserDetails,
-  apiURL,
 }) {
   if (!songList.length) {
     return <div className=""></div>;
@@ -17,33 +20,17 @@ export default function SongList({
   function handleClick(event) {
     const addPromise =
       event.target.id === "add"
-        ? axios.post(apiURL + "/user/profile/add", {
-            song_id: event.target.value,
-            user_id: userDetails.userId,
-          })
+        ? addSongToList(userDetails.userId, event.target.value)
         : Promise.resolve(); // No operation if event.target.id is not "add"
 
     const removePromise =
       event.target.id === "remove"
-        ? axios.delete(
-            apiURL + `/user/profile/${userDetails.userId}/${event.target.value}`
-          )
+        ? removeSongFromList(userDetails.userId, event.target.value)
         : Promise.resolve(); // No operation if event.target.id is not "remove"
 
     Promise.all([addPromise, removePromise])
       .then(() => {
-        axios
-          .get(apiURL + "/user/profile", {
-            headers: {
-              Authorization: `Bearer ${sessionStorage.authToken}`,
-            },
-          })
-          .then((response) => {
-            setUserDetails(response.data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        obtainUserDetails(setUserDetails);
       })
       .catch((error) => {
         console.log(error);
