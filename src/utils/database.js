@@ -69,3 +69,19 @@ export function obtainSongList(
       }
     });
 }
+
+export function obtainUserDetails(userDetailsFunction) {
+  const apiURL = import.meta.env.VITE_API_URL;
+  axios
+    .get(apiURL + "/user/profile", {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.authToken}`,
+      },
+    })
+    .then((response) => {
+      userDetailsFunction(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
