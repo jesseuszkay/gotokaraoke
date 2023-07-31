@@ -1,11 +1,11 @@
 import "./SignUp.scss";
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { createUserDetails } from "../../utils/database";
 
-function SignUp({ apiURL }) {
-  const navigate = useNavigate();
+function SignUp() {
   const [signUpError, setSignUpError] = useState(false);
+  const navigate = useNavigate();
 
   const handleOnSubmit = async (event) => {
     event.preventDefault();
@@ -14,17 +14,7 @@ function SignUp({ apiURL }) {
     const username = event.target.username.value;
     const password = event.target.password.value;
 
-    axios
-      .post(apiURL + "/user/signup", {
-        username,
-        password,
-      })
-      .then(() => {
-        navigate("/login");
-      })
-      .catch((err) => {
-        setSignUpError(true);
-      });
+    createUserDetails(setSignUpError, username, password, navigate);
   };
 
   return (

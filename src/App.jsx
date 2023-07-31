@@ -14,8 +14,8 @@ import Profile from "./pages/Profile/Profile";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import NotFound from "./pages/NotFound/NotFound";
+import { obtainUserDetails } from "./utils/database";
 
 function App() {
   const location = useLocation();
@@ -27,18 +27,7 @@ function App() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      axios
-        .get(apiURL + "/user/profile", {
-          headers: {
-            Authorization: `Bearer ${sessionStorage.authToken}`,
-          },
-        })
-        .then((response) => {
-          setUserDetails(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      obtainUserDetails(setUserDetails);
     }
   }, [isLoggedIn]);
 
