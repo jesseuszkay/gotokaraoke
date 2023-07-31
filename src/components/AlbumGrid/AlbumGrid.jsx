@@ -1,8 +1,8 @@
 import "./AlbumGrid.scss";
 import "../AlbumModal/AlbumModal.scss";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import AlbumModal from "../AlbumModal/AlbumModal";
+import {obtainAlbums,obtainAlbumSongs} from "../../utils/database";
 
 export default function AlbumGrid({
   apiURL,
@@ -16,15 +16,8 @@ export default function AlbumGrid({
   const [loadIn, setLoadIn] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(apiURL + `/albums`)
-      .then((response) => {
-        setAllAlbums(response.data);
-      })
-      .catch((error) => {
-        if (error.response && error.response.status === 404) {
-        }
-      });
+
+    obtainAlbums(setAllAlbums);
 
     setTimeout(() => {
       setLoadIn(false);
@@ -32,18 +25,7 @@ export default function AlbumGrid({
   }, []);
 
   const handleClick = (event) => {
-    axios
-      .get(apiURL + `/albums/${event.target.id}`)
-      .then((response) => {
-        setSelectedAlbum(response.data);
-      })
-      .then(() => {
-        setAlbumModal(true);
-      })
-      .catch((error) => {
-        if (error.response && error.response.status === 404) {
-        }
-      });
+    obtainAlbumSongs(event.target.id,setSelectedAlbum, setAlbumModal);
   };
 
   if (!allAlbums) {

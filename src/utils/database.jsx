@@ -69,6 +69,33 @@ export function obtainSongList(
     });
 }
 
+export function obtainAlbums(albumListFunction) {
+  return axios
+  .get(apiURL + `/albums`)
+  .then((response) => {
+    albumListFunction(response.data);
+  })
+  .catch((error) => {
+    if (error.response && error.response.status === 404) {
+    }
+  });
+}
+
+export function obtainAlbumSongs(albumID, selectAlbumFunction, albumModalFunction) {
+  return axios
+  .get(apiURL + `/albums/${albumID}`)
+  .then((response) => {
+    selectAlbumFunction(response.data);
+  })
+  .then(() => {
+    albumModalFunction(true);
+  })
+  .catch((error) => {
+    if (error.response && error.response.status === 404) {
+    }
+  });
+}
+
 export function obtainUserDetails(userDetailsFunction) {
   axios
     .get(apiURL + "/user/profile", {
