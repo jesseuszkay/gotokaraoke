@@ -24,8 +24,7 @@ export default function Profile({ userDetails, setUserDetails, apiURL }) {
     );
 
     const changePage = () => {
-      console.log((userDetails.songs.length - 1) % 5);
-      if ((userDetails.songs.length - 1) % 5 === 0) {
+      if ((userDetails.songs.length - 1) % 5 === 0 && profilePageNumber != 1) {
         setProfilePageNumber((prev) => prev - 1);
       }
     };
