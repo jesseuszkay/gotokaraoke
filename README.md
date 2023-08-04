@@ -1,3 +1,5 @@
+LINK TO GOTOKARAOKE: https://gotokaraoke.netlify.app/
+
 # gotokaraoke
 
 gotokaraoke is a comprehensive karaoke song database that allows users to search, filter, and create personalized song lists. The database includes songs sourced from the Sing King Karaoke channel, ensuring that there is at least one karaoke version available for each song. Additional data, obtained from Spotify and carefully edited for accuracy, has been integrated into the database to enhance filtering capabilities.
